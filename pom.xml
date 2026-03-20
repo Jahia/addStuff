@@ -26,7 +26,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     <groupId>org.jahia.modules</groupId>
     <artifactId>addstuff</artifactId>
     <name>addStuff</name>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>3.0.0</version>
     <packaging>bundle</packaging>
     <description>Jahia module that injects custom HTML (CSS, JavaScript, tracking scripts, etc.) into the HEAD or BODY of any page, at site level or per page, without modifying templates.</description>
     <url>https://github.com/jahia/addStuff</url>
@@ -51,7 +51,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     <scm>
         <connection>scm:git:git@github.com:jahia/addStuff.git</connection>
         <developerConnection>scm:git:git@github.com:jahia/addStuff.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>addstuff-3.0.0</tag>
     </scm>
     <properties>
         <jahia-module-signature>MC0CFQCDZKU6y8Ab3BzzD4GVjSuC5Z/lMwIUKTQVQDBkGwj5DkSrp8elD3EVgQs=</jahia-module-signature>
