@@ -49,8 +49,8 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:pvollenweider/addStuff.git</connection>
-        <developerConnection>scm:git:git@github.com:pvollenweider/addStuff.git</developerConnection>
+        <connection>scm:git:git@github.com:jahia/addStuff.git</connection>
+        <developerConnection>scm:git:git@github.com:jahia/addStuff.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <properties>
