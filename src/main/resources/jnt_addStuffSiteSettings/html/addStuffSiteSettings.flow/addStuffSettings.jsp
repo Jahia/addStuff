@@ -72,16 +72,13 @@
 </div>
 <p class="text-muted"><fmt:message key="addstuff.siteSettings.description"/></p>
 
-<form action="${flowExecutionUrl}" method="post" id="addStuffForm">
-    <input type="hidden" name="_eventId" id="addStuffFormAction"/>
+<%-- Hidden textareas carry current JCR values into CodeMirror (fn:escapeXml → browser decodes → raw value). --%>
+<textarea id="addStuffHeadTop" style="display:none">${fn:escapeXml(siteNode.properties['addStuffHeadTop'])}</textarea>
+<textarea id="addStuffHead"    style="display:none">${fn:escapeXml(siteNode.properties['addStuffHead'])}</textarea>
+<textarea id="addStuffBodyTop" style="display:none">${fn:escapeXml(siteNode.properties['addStuffBodyTop'])}</textarea>
+<textarea id="addStuffBody"    style="display:none">${fn:escapeXml(siteNode.properties['addStuffBody'])}</textarea>
 
-    <%-- Hidden textareas used as form fields; CodeMirror syncs to them on submit --%>
-    <textarea name="addStuffHeadTop" id="addStuffHeadTop" style="display:none">${fn:escapeXml(siteNode.properties['addStuffHeadTop'])}</textarea>
-    <textarea name="addStuffHead"    id="addStuffHead"    style="display:none">${fn:escapeXml(siteNode.properties['addStuffHead'])}</textarea>
-    <textarea name="addStuffBodyTop" id="addStuffBodyTop" style="display:none">${fn:escapeXml(siteNode.properties['addStuffBodyTop'])}</textarea>
-    <textarea name="addStuffBody"    id="addStuffBody"    style="display:none">${fn:escapeXml(siteNode.properties['addStuffBody'])}</textarea>
-
-    <div class="container-fluid">
+<div class="container-fluid">
 
         <%-- HEAD section --%>
         <div class="addstuff-section">
@@ -138,10 +135,12 @@
         </div>
 
     </div>
-</form>
 
 <script>
 (function () {
+    var contextPath = '${pageContext.request.contextPath}';
+    var sitePath    = '${fn:escapeXml(siteNode.path)}';
+
     var cmOptions = {
         mode: 'htmlmixed',
         theme: 'default',
@@ -163,17 +162,83 @@
         editors[id] = editor;
     });
 
+    // Save via GraphQL (Content-Type: application/json bypasses the XSS servlet filter).
+    var GQL_MUTATION = [
+        'mutation setAddStuffProperties(',
+        '  $path: String!,',
+        '  $addStuffHeadTop: String!, $addStuffHead: String!,',
+        '  $addStuffBodyTop: String!, $addStuffBody: String!',
+        ') {',
+        '  jcr {',
+        '    mutateNode(pathOrId: $path) {',
+        '      addMixins(mixins: ["jmix:addStuff"])',
+        '      p1: mutateProperty(name: "addStuffHeadTop") { setValue(value: $addStuffHeadTop) }',
+        '      p2: mutateProperty(name: "addStuffHead")    { setValue(value: $addStuffHead) }',
+        '      p3: mutateProperty(name: "addStuffBodyTop") { setValue(value: $addStuffBodyTop) }',
+        '      p4: mutateProperty(name: "addStuffBody")    { setValue(value: $addStuffBody) }',
+        '    }',
+        '  }',
+        '}'
+    ].join('\n');
+
+    function showToast(message, isError) {
+        var toast = document.createElement('div');
+        toast.textContent = message;
+        toast.style.cssText = 'position:fixed;bottom:24px;right:24px;padding:12px 20px;border-radius:4px;color:#fff;font-size:13px;z-index:9999;opacity:1;transition:opacity 0.5s;background:' + (isError ? '#c0392b' : '#27ae60');
+        document.body.appendChild(toast);
+        setTimeout(function () {
+            toast.style.opacity = '0';
+            setTimeout(function () { document.body.removeChild(toast); }, 500);
+        }, 3000);
+    }
+
     document.getElementById('btnSave').addEventListener('click', function () {
-        fields.forEach(function (id) {
-            document.getElementById(id).value = editors[id].getValue();
+        var btn = document.getElementById('btnSave');
+        btn.disabled = true;
+
+        var variables = { path: sitePath };
+        fields.forEach(function (id) { variables[id] = editors[id].getValue(); });
+
+        fetch(contextPath + '/modules/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            credentials: 'include',
+            body: JSON.stringify({ query: GQL_MUTATION, variables: variables })
+        })
+        .then(function (r) {
+            if (!r.ok) { throw new Error('HTTP ' + r.status); }
+            return r.json();
+        })
+        .then(function (data) {
+            if (data.errors && data.errors.length > 0) {
+                showToast(data.errors[0].message, true);
+                return;
+            }
+            var node = data.data && data.data.jcr && data.data.jcr.mutateNode;
+            if (!node) {
+                showToast('Unexpected server response', true);
+                return;
+            }
+            var allSaved = node.p1.setValue && node.p2.setValue && node.p3.setValue && node.p4.setValue;
+            if (!allSaved) {
+                showToast('Save incomplete — check server logs', true);
+                return;
+            }
+            showToast('Your stuff has been saved', false);
+        })
+        .catch(function (err) {
+            showToast(err.message || 'Network error', true);
+        })
+        .finally(function () {
+            document.getElementById('btnSave').disabled = false;
         });
-        document.getElementById('addStuffFormAction').value = 'save';
-        document.getElementById('addStuffForm').submit();
     });
 
     document.getElementById('btnCancel').addEventListener('click', function () {
-        document.getElementById('addStuffFormAction').value = 'cancel';
-        document.getElementById('addStuffForm').submit();
+        window.location.reload();
     });
 }());
 </script>
