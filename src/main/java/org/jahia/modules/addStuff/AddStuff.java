@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 @Component(service = RenderFilter.class)
 public class AddStuff extends AbstractFilter {
 
-    private static Logger logger = LoggerFactory.getLogger(AddStuff.class);
+    private static final Logger logger = LoggerFactory.getLogger(AddStuff.class);
 
     @Activate
     public void activate() {
@@ -63,7 +63,7 @@ public class AddStuff extends AbstractFilter {
                 String addStuffBodyTop = node.hasProperty("addStuffBodyTop") ? node.getProperty("addStuffBodyTop").getString() : null;
                 String addStuffBody = node.hasProperty("addStuffBody") ? node.getProperty("addStuffBody").getString() : null;
 
-                if (StringUtils.isNotEmpty(addStuffHeadTop) || StringUtils.isNotEmpty(addStuffHead) || StringUtils.isNotEmpty(addStuffBodyTop) || StringUtils.isNotEmpty(addStuffBody)) {
+                if (StringUtils.isNotBlank(addStuffHeadTop) || StringUtils.isNotBlank(addStuffHead) || StringUtils.isNotBlank(addStuffBodyTop) || StringUtils.isNotBlank(addStuffBody)) {
                     Source source = new Source(out);
                     OutputDocument outputDocument = new OutputDocument(source);
                     if (StringUtils.isNotBlank(addStuffHeadTop)) {
