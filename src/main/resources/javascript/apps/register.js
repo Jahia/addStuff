@@ -14,6 +14,15 @@
         document.head.appendChild(link);
     });
 
+    // Height, font, and fold-gutter icons for CodeMirror editors inside jContent content editor
+    var style = document.createElement('style');
+    style.textContent = [
+        '.addstuff-cm-field .CodeMirror { height: 140px; font-size: 12px; }',
+        '.CodeMirror-foldgutter-open:after   { content: "\\25BE"; }',
+        '.CodeMirror-foldgutter-folded:after { content: "\\25B8"; }'
+    ].join('\n');
+    document.head.appendChild(style);
+
     function loadScript(src) {
         return new Promise(function (resolve, reject) {
             var s = document.createElement('script');
@@ -36,12 +45,13 @@
         };
     }
 
-    function el(type, props) {
+    /** Minimal React element factory — no React import needed. */
+    function h(type, props, key, ref) {
         return {
             $$typeof: REACT_ELEMENT,
             type: type,
-            key: null,
-            ref: null,
+            key: key !== undefined ? String(key) : null,
+            ref: ref || null,
             props: props || {},
             _owner: null,
             _store: {}
@@ -52,16 +62,22 @@
      * CodeMirror selectorType component.
      * API matches Jahia content-editor selectorType convention: { field, id, value, onChange }
      *
-     * Uses setTimeout(0) to initialise CodeMirror after React has flushed the div
-     * to the DOM — more reliable than ref callbacks on manually-crafted React elements.
+     * Uses a React ref callback (4th arg of h()) so CodeMirror is initialised
+     * synchronously when React attaches the div to the DOM — more reliable than
+     * setTimeout(0) in the jContent content editor context.
+     *
+     * Note: window.React is not exposed in the jContent webpack context, so React
+     * hooks are not available. The domEl._cm pattern is used for instance storage.
      */
     function CodeMirrorAddStuffCmp(props) {
         var value = props.value || '';
         var onChange = props.onChange;
-        var containerId = 'addstuff-cm-' + (props.id || 'field');
+        var id = props.id || 'cm';
 
-        setTimeout(function () {
-            var domEl = document.getElementById(containerId);
+        return h('div', {
+            className: 'addstuff-cm-field',
+            style: {border: '1px solid #ddd', borderRadius: '3px'}
+        }, id, function (domEl) {
             if (!domEl) {
                 return;
             }
@@ -91,16 +107,15 @@
                         onChange(editor.getValue());
                     }
                 });
+
+                // Defer refresh so the container has its final layout dimensions —
+                // otherwise CodeMirror measures the gutter at 1px and code overlaps line numbers.
+                setTimeout(function () { cm.refresh(); }, 0);
             } else if (value !== domEl._cmValue) {
                 // Value updated externally (e.g. language switch) — sync editor
                 domEl._cm.setValue(value);
                 domEl._cmValue = value;
             }
-        }, 0);
-
-        return el('div', {
-            id: containerId,
-            style: {border: '1px solid #ddd', borderRadius: '3px'}
         });
     }
 
