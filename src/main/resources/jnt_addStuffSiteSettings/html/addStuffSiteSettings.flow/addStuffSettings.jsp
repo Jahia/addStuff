@@ -7,7 +7,6 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<%--@elvariable id="flowExecutionUrl" type="java.lang.String"--%>
 <%--@elvariable id="siteNode" type="org.jahia.services.content.decorator.JCRSiteNode"--%>
 
 <c:set var="cmBase" value="${pageContext.request.contextPath}/modules/addstuff/javascript/codemirror"/>
@@ -172,10 +171,10 @@
         '  jcr {',
         '    mutateNode(pathOrId: $path) {',
         '      addMixins(mixins: ["jmix:addStuff"])',
-        '      p1: mutateProperty(name: "addStuffHeadTop") { setValue(value: $addStuffHeadTop) }',
-        '      p2: mutateProperty(name: "addStuffHead")    { setValue(value: $addStuffHead) }',
-        '      p3: mutateProperty(name: "addStuffBodyTop") { setValue(value: $addStuffBodyTop) }',
-        '      p4: mutateProperty(name: "addStuffBody")    { setValue(value: $addStuffBody) }',
+        '      p1: mutateProperty(name: "addStuffHeadTop") { setValue(type: STRING, value: $addStuffHeadTop) }',
+        '      p2: mutateProperty(name: "addStuffHead")    { setValue(type: STRING, value: $addStuffHead) }',
+        '      p3: mutateProperty(name: "addStuffBodyTop") { setValue(type: STRING, value: $addStuffBodyTop) }',
+        '      p4: mutateProperty(name: "addStuffBody")    { setValue(type: STRING, value: $addStuffBody) }',
         '    }',
         '  }',
         '}'

@@ -1,25 +1,9 @@
 {
   "name": "jmix:addStuff",
   "fields": [
-    {
-      "name": "addStuffHeadTop",
-      "selectorType": "CodeMirrorAddStuff",
-      "selectorOptions": [{"name": "mode", "value": "htmlmixed"}]
-    },
-    {
-      "name": "addStuffHead",
-      "selectorType": "CodeMirrorAddStuff",
-      "selectorOptions": [{"name": "mode", "value": "htmlmixed"}]
-    },
-    {
-      "name": "addStuffBodyTop",
-      "selectorType": "CodeMirrorAddStuff",
-      "selectorOptions": [{"name": "mode", "value": "htmlmixed"}]
-    },
-    {
-      "name": "addStuffBody",
-      "selectorType": "CodeMirrorAddStuff",
-      "selectorOptions": [{"name": "mode", "value": "htmlmixed"}]
-    }
+    {"name": "addStuffHeadTop",  "selectorType": "CodeMirrorAddStuff", "selectorOptions": [{"name": "mode", "value": "htmlmixed"}]},
+    {"name": "addStuffHead",     "selectorType": "CodeMirrorAddStuff", "selectorOptions": [{"name": "mode", "value": "htmlmixed"}]},
+    {"name": "addStuffBodyTop",  "selectorType": "CodeMirrorAddStuff", "selectorOptions": [{"name": "mode", "value": "htmlmixed"}]},
+    {"name": "addStuffBody",     "selectorType": "CodeMirrorAddStuff", "selectorOptions": [{"name": "mode", "value": "htmlmixed"}]}
   ]
 }
