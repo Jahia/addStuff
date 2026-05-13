@@ -15,6 +15,7 @@ function AddStuffSettingsRoute(props) {
 }
 
 export default function register() {
+    console.log('%c AddStuff: registering adminRoute and selectorType', 'color: #3c8cba');
     registry.add('adminRoute', 'addStuffSiteSettings', {
         targets: ['administration-sites:100'],
         requiredPermission: 'siteAdminAddStuff',
