@@ -42,6 +42,9 @@ export const deployAddStuffModule = () => {
 export const pageUrl = (pageName: string) =>
     `/sites/${siteKey}/home/${pageName}.html`
 
+export const homeUrl = () =>
+    `/sites/${siteKey}/home.html`
+
 export const pageUrlDefault = (pageName: string) =>
     `/cms/render/default/en/sites/${siteKey}/home/${pageName}.html`
 
