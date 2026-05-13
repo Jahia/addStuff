@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Jahia 8.2+](https://img.shields.io/badge/Jahia-8.2%2B-blue.svg)](https://www.jahia.com)
-[![Version](https://img.shields.io/badge/version-3.0.2-green.svg)](https://github.com/jahia/addStuff/releases/tag/addstuff-3.0.2)
+[![Version](https://img.shields.io/badge/version-3.0.3-green.svg)](https://github.com/jahia/addStuff/releases/tag/addstuff-3.0.3)
 
 AddStuff is a Jahia module that lets you insert arbitrary HTML (scripts, stylesheets, tracking pixels, consent banners, …) at four precise locations in every rendered page. It works as a render filter: no template change, no redeployment, no developer required.
 
@@ -276,6 +276,7 @@ Page-level changes go through the standard Jahia publication workflow. Make sure
 
 | Version | Date | Requires Jahia | Changes |
 |---|---|---|---|
+| **3.0.3** | 2026-05-13 | 8.2+ | Fix: CodeMirror blank display when opening the Options tab in Content Editor (ResizeObserver-based refresh) · Site settings panel migrated from Spring Webflow to React/Moonstone · `mvn clean install` now compiles JS automatically via frontend-maven-plugin |
 | **3.0.2** | 2026-04-15 | 8.2+ | Fix: CodeMirror gutter overlap, missing height and fold icons in jContent content editor ([#5](https://github.com/Jahia/addStuff/issues/5)) · Remove dead Webflow save path · Explicit `type: STRING` in GraphQL `setValue` mutations |
 | **3.0.1** | 2026-04-15 | 8.2+ | Fix: script tags stripped on save — switched site settings panel from Spring Webflow form submission to GraphQL mutation |
 | **3.0.0** | 2026-03-20 | 8.2+ | Dedicated site admin panel with CodeMirror editors · CodeMirror in Content Editor for page-level fields · `siteAdminAddStuff` permission · OSGi Declarative Services (removed Spring/Blueprint) · Translations: EN, FR, DE, IT, PT, ES |
