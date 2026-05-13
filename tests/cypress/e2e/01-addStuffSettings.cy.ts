@@ -46,10 +46,10 @@ describe('AddStuff Site Settings', () => {
     it('saves values in all four editors and shows a success alert', () => {
         cy.visit(adminPath);
 
-        cy.setCodeMirrorValue(0, '<!-- head top -->');
-        cy.setCodeMirrorValue(1, '<!-- head end -->');
-        cy.setCodeMirrorValue(2, '<!-- body top -->');
-        cy.setCodeMirrorValue(3, '<!-- body end -->');
+        cy.setCodeMirrorValue('headTop', '<!-- head top -->');
+        cy.setCodeMirrorValue('head', '<!-- head end -->');
+        cy.setCodeMirrorValue('bodyTop', '<!-- body top -->');
+        cy.setCodeMirrorValue('body', '<!-- body end -->');
 
         cy.contains('button', 'Save').click();
 
@@ -81,17 +81,17 @@ describe('AddStuff Site Settings', () => {
 
         cy.visit(adminPath);
 
-        cy.getCodeMirrorValue(0).should('equal', '<script>/* gtm */</script>');
-        cy.getCodeMirrorValue(1).should('equal', '<link rel="stylesheet" href="/custom.css">');
-        cy.getCodeMirrorValue(2).should('equal', '');
-        cy.getCodeMirrorValue(3).should('equal', '<script>/* analytics */</script>');
+        cy.getCodeMirrorValue('headTop').should('equal', '<script>/* gtm */</script>');
+        cy.getCodeMirrorValue('head').should('equal', '<link rel="stylesheet" href="/custom.css">');
+        cy.getCodeMirrorValue('bodyTop').should('equal', '');
+        cy.getCodeMirrorValue('body').should('equal', '<script>/* analytics */</script>');
 
         // Navigate away and come back — values must persist
         cy.visit('/jahia/administration');
         cy.visit(adminPath);
 
-        cy.getCodeMirrorValue(0).should('equal', '<script>/* gtm */</script>');
-        cy.getCodeMirrorValue(3).should('equal', '<script>/* analytics */</script>');
+        cy.getCodeMirrorValue('headTop').should('equal', '<script>/* gtm */</script>');
+        cy.getCodeMirrorValue('body').should('equal', '<script>/* analytics */</script>');
     });
 
     it('cancels edits and reverts the form to the last saved state', () => {
@@ -107,16 +107,16 @@ describe('AddStuff Site Settings', () => {
         });
 
         cy.visit(adminPath);
-        cy.getCodeMirrorValue(0).should('equal', '<script>/* original */</script>');
+        cy.getCodeMirrorValue('headTop').should('equal', '<script>/* original */</script>');
 
         // Modify without saving
-        cy.setCodeMirrorValue(0, '<script>/* changed */</script>');
-        cy.getCodeMirrorValue(0).should('equal', '<script>/* changed */</script>');
+        cy.setCodeMirrorValue('headTop', '<script>/* changed */</script>');
+        cy.getCodeMirrorValue('headTop').should('equal', '<script>/* changed */</script>');
 
         cy.contains('button', 'Cancel').click();
 
         // Value must revert to the last saved one
-        cy.getCodeMirrorValue(0).should('equal', '<script>/* original */</script>');
+        cy.getCodeMirrorValue('headTop').should('equal', '<script>/* original */</script>');
     });
 
     it('clears a field via the UI and verifies it is empty in JCR', () => {
@@ -132,9 +132,9 @@ describe('AddStuff Site Settings', () => {
         });
 
         cy.visit(adminPath);
-        cy.getCodeMirrorValue(0).should('equal', '<meta name="test" content="value">');
+        cy.getCodeMirrorValue('headTop').should('equal', '<meta name="test" content="value">');
 
-        cy.setCodeMirrorValue(0, '');
+        cy.setCodeMirrorValue('headTop', '');
         cy.contains('button', 'Save').click();
 
         cy.get('[class*="alertSuccess"]').should('be.visible');

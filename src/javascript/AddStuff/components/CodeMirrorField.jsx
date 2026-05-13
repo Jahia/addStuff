@@ -29,7 +29,7 @@ const CM_OPTIONS = {
     tabSize: 2
 };
 
-export function CodeMirrorField({value, onChange}) {
+export function CodeMirrorField({value, onChange, id}) {
     const containerRef = useRef(null);
     const cmRef = useRef(null);
     const valueRef = useRef(value || '');
@@ -72,6 +72,7 @@ export function CodeMirrorField({value, onChange}) {
 
     return (
         <div
+            id={id}
             ref={containerRef}
             style={{border: '1px solid var(--color-gray_light40, #ddd)', borderRadius: '3px'}}
         />

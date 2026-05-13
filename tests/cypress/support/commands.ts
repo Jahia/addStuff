@@ -1,38 +1,31 @@
-/**
- * Sets a value on a CodeMirror 5 editor by index (zero-based) within the page.
- * Uses the CodeMirror API directly to reliably set content and trigger onChange.
- */
-Cypress.Commands.add('setCodeMirrorValue', (index: number, value: string) => {
-    cy.window().then(win => {
-        const editors = win.document.querySelectorAll('.CodeMirror');
-        const container = editors[index] as HTMLElement & {CodeMirror: any};
-        if (!container || !container.CodeMirror) {
-            throw new Error(`No CodeMirror editor found at index ${index}`);
+Cypress.Commands.add('setCodeMirrorValue', (id: string, value: string) => {
+    cy.get(`#${id} .CodeMirror`).then(([container]) => {
+        const cm = (container as HTMLElement & {CodeMirror: any}).CodeMirror;
+        if (!cm) {
+            throw new Error(`No CodeMirror editor found with id "${id}"`);
         }
-        container.CodeMirror.setValue(value);
-        container.CodeMirror.focus();
+
+        cm.setValue(value);
+        cm.focus();
     });
 });
 
-/**
- * Reads the current value of a CodeMirror 5 editor by index.
- */
-Cypress.Commands.add('getCodeMirrorValue', (index: number) => {
-    return cy.window().then(win => {
-        const editors = win.document.querySelectorAll('.CodeMirror');
-        const container = editors[index] as HTMLElement & {CodeMirror: any};
-        if (!container || !container.CodeMirror) {
-            throw new Error(`No CodeMirror editor found at index ${index}`);
+Cypress.Commands.add('getCodeMirrorValue', (id: string) => {
+    return cy.get(`#${id} .CodeMirror`).then(([container]) => {
+        const cm = (container as HTMLElement & {CodeMirror: any}).CodeMirror;
+        if (!cm) {
+            throw new Error(`No CodeMirror editor found with id "${id}"`);
         }
-        return container.CodeMirror.getValue();
+
+        return cm.getValue();
     });
 });
 
 declare global {
     namespace Cypress {
         interface Chainable {
-            setCodeMirrorValue(index: number, value: string): Chainable<void>;
-            getCodeMirrorValue(index: number): Chainable<string>;
+            setCodeMirrorValue(id: string, value: string): Chainable<void>;
+            getCodeMirrorValue(id: string): Chainable<string>;
         }
     }
 }
