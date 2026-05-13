@@ -14,10 +14,10 @@ site level and page level.
 | Node.js | **18.x** | 20.x also supported |
 | Yarn | 1.22.x | Classic (v1) |
 | Jahia | 8.2.3.0 | EE, with `addstuff` module deployed |
-| Template set | `bootstrap5-templates-starter` | Required to render test pages |
+| Template set | `empty-templates` v1.0.0 | Bundled at `cypress/fixtures/modules/empty-templates-1.0.0.jar`, deployed automatically by `01-Tests.cy.ts` |
 
-> `01-Tests.cy.ts` automatically deploys the JAR via the Jahia provisioning API before the other tests run.
-> The JAR must have been built first: `cd .. && mvn clean install`
+> `01-Tests.cy.ts` automatically deploys both `empty-templates` and the addstuff JAR via the Jahia
+> provisioning API. The addstuff JAR must have been built first: `cd .. && mvn clean install`
 
 ---
 
@@ -103,6 +103,7 @@ tests/
 
 | Helper | Purpose |
 |--------|---------|
+| `deployEmptyTemplates()` | Download and install `empty-templates` v1.0.0 from GitHub releases (skipped if already present) |
 | `pageUrl(name)` | Live render URL for a test page (`/sites/…/home/<name>.html`) |
 | `pageUrlDefault(name)` | Default (edit) workspace URL — authenticated only, for debugging |
 | `createTestSite()` | Create the `addstufftest` site with `bootstrap5-templates-starter` |

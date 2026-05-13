@@ -2,6 +2,23 @@ import {createSite as jahiaCreateSite, deleteSite as jahiaDeleteSite, enableModu
 
 const siteKey = 'addstufftest'
 
+// Deploys the empty-templates JAR bundled in fixtures/modules/.
+// Uses forceUpdate:false so the install is a no-op if the module is already present.
+export const deployEmptyTemplates = () => {
+    const jahiaUrl = Cypress.env('JAHIA_URL') || 'http://localhost:8080'
+    const password = Cypress.env('SUPER_USER_PASSWORD') || 'root1234'
+    const jar = `${Cypress.config('projectRoot')}/cypress/fixtures/modules/empty-templates-1.0.0.jar`
+
+    cy.exec(
+        `curl -sf -u "root:${password}" ` +
+        `-X POST "${jahiaUrl}/modules/api/provisioning" ` +
+        `--form "script=[{\\"installAndStartBundle\\":\\"empty-templates-1.0.0.jar\\",\\"forceUpdate\\":false}]" ` +
+        `--form "file=@${jar}"`,
+        {timeout: 60000}
+    ).its('code').should('eq', 0)
+    cy.wait(3000)
+}
+
 // Deploys the addstuff JAR via the Jahia provisioning REST API.
 // Cypress.config('projectRoot') points to tests/, so ../target is addStuff/target/.
 export const deployAddStuffModule = () => {
@@ -30,7 +47,7 @@ export const pageUrlDefault = (pageName: string) =>
 
 export const createTestSite = () => {
     jahiaCreateSite(siteKey, {
-        templateSet: 'bootstrap5-templates-starter',
+        templateSet: 'empty-templates',
         serverName: 'localhost',
         locale: 'en'
     })
@@ -48,7 +65,7 @@ export const createTestPage = (pageName: string) => {
         primaryNodeType: 'jnt:page',
         properties: [
             {name: 'jcr:title', value: pageName, language: 'en'},
-            {name: 'j:templateName', value: 'starter'}
+            {name: 'j:templateName', value: 'empty-templates'}
         ],
         children: [{name: 'pagecontent', primaryNodeType: 'jnt:contentList'}]
     })

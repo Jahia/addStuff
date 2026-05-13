@@ -1,8 +1,9 @@
-import {deployAddStuffModule, createTestSite, deleteTestSite, createTestPage, publishNode, pageUrl} from '../support/addstuff'
+import {deployEmptyTemplates, deployAddStuffModule, createTestSite, deleteTestSite, createTestPage, publishNode, pageUrl} from '../support/addstuff'
 
 describe('AddStuff — Infrastructure', () => {
     before(() => {
         cy.login()
+        deployEmptyTemplates()
         deployAddStuffModule()
         deleteTestSite()
         createTestSite()

@@ -1,0 +1,9 @@
+- karafCommand: "log:log 'START - AddStuff provisioning'"
+
+- karafCommand: "log:log 'START - Install empty-templates'"
+- installBundle: 'empty-templates-1.0.0.jar'
+  autoStart: true
+  uninstallPreviousVersion: true
+- karafCommand: "log:log 'END - Install empty-templates'"
+
+- karafCommand: "log:log 'END - AddStuff provisioning'"
