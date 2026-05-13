@@ -1,6 +1,10 @@
 import {defineConfig} from 'cypress'
 
 export default defineConfig({
+    reporter: 'cypress-multi-reporters',
+    reporterOptions: {
+        configFile: 'reporter-config.json'
+    },
     screenshotsFolder: './results/screenshots',
     video: true,
     videosFolder: './results/videos',
