@@ -1,5 +1,12 @@
-node/
-node_modules/
-results/
+artifacts
+build-dependencies
+coverage
+cypress/videos
 .env
-artifacts/*.jar
+instrumented/
+node_modules/
+.nyc_output/
+nyc_output
+results/
+run-artifacts
+.yarn/

@@ -11,6 +11,7 @@ export default defineConfig({
     videosFolder: './results/videos',
     viewportWidth: 1366,
     viewportHeight: 768,
+    defaultCommandTimeout: 10000,
     watchForFileChanges: false,
     e2e: {
         setupNodeEvents(on, config) {
