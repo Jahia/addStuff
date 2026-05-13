@@ -1,0 +1,10 @@
+query GetAddStuffSettings($sitePath: String!) {
+    jcr {
+        nodeByPath(path: $sitePath) {
+            addStuffHeadTop: property(name: "addStuffHeadTop") { value }
+            addStuffHead: property(name: "addStuffHead") { value }
+            addStuffBodyTop: property(name: "addStuffBodyTop") { value }
+            addStuffBody: property(name: "addStuffBody") { value }
+        }
+    }
+}

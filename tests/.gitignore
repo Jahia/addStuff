@@ -1,0 +1,5 @@
+node/
+node_modules/
+results/
+.env
+artifacts/*.jar

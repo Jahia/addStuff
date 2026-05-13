@@ -1,0 +1,17 @@
+mutation SaveAddStuffSettings(
+    $path: String!
+    $addStuffHeadTop: String!
+    $addStuffHead: String!
+    $addStuffBodyTop: String!
+    $addStuffBody: String!
+) {
+    jcr {
+        mutateNode(pathOrId: $path) {
+            addMixins(mixins: ["jmix:addStuff"])
+            p1: mutateProperty(name: "addStuffHeadTop") { setValue(type: STRING, value: $addStuffHeadTop) }
+            p2: mutateProperty(name: "addStuffHead")    { setValue(type: STRING, value: $addStuffHead) }
+            p3: mutateProperty(name: "addStuffBodyTop") { setValue(type: STRING, value: $addStuffBodyTop) }
+            p4: mutateProperty(name: "addStuffBody")    { setValue(type: STRING, value: $addStuffBody) }
+        }
+    }
+}

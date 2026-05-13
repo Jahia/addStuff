@@ -1,0 +1,39 @@
+- karafCommand: "log:log 'START - provisioning addStuff tests'"
+
+- karafCommand: "log:log 'START - Install Digitall bundles'"
+- installBundle:
+      - 'mvn:org.jahia.modules/bookmarks/3.1.0'
+      - 'mvn:org.jahia.modules/bootstrap3-components/4.3.0'
+      - 'mvn:org.jahia.modules/bootstrap3-core/4.3.0'
+      - 'mvn:org.jahia.modules/broadcast/3.1.1'
+      - 'mvn:org.jahia.modules/calendar/4.0.0'
+      - 'mvn:org.jahia.modules/categoriesmanager/2.0.3'
+      - 'mvn:org.jahia.modules/event/4.0.0'
+      - 'mvn:org.jahia.modules/external-provider/4.5.0'
+      - 'mvn:org.jahia.modules/external-provider-modules/4.5.0'
+      - 'mvn:org.jahia.modules/forms/4.0.0'
+      - 'mvn:org.jahia.modules/forum/4.0.0'
+      - 'mvn:org.jahia.modules/grid/2.2.0'
+      - 'mvn:org.jahia.modules/html-filtering/3.3.0'
+      - 'mvn:org.jahia.modules/jcr-provisioning/1.0.0'
+      - 'mvn:org.jahia.modules/news/4.0.0'
+      - 'mvn:org.jahia.modules/polls/4.0.0'
+      - 'mvn:org.jahia.modules/publication/2.0.0'
+      - 'mvn:org.jahia.modules/remotepublication-service/2.0.0'
+      - 'mvn:org.jahia.modules/seo/4.0.0'
+      - 'mvn:org.jahia.modules/socialsharing/4.0.0'
+      - 'mvn:org.jahia.modules/tasks/4.0.0'
+      - 'mvn:org.jahia.modules/template-builder/3.2.0'
+      - 'mvn:org.jahia.modules/tinymce-editor/8.0.0'
+      - 'mvn:org.jahia.modules/user-groups-provider/2.0.3'
+      - 'mvn:org.jahia.modules/wem-deployer/3.0.0'
+  autoStart: true
+  uninstallPreviousVersion: true
+- karafCommand: "log:log 'END - Install Digitall bundles'"
+
+- karafCommand: "log:log 'START - Import Digitall site'"
+- import: "jar:mvn:org.jahia.modules/digitall/RELEASE/zip/import!/users.zip"
+- importSite: "jar:mvn:org.jahia.modules/digitall/RELEASE/zip/import!/Digitall.zip"
+- karafCommand: "log:log 'END - Import Digitall site'"
+
+- karafCommand: "log:log 'END - provisioning addStuff tests'"
