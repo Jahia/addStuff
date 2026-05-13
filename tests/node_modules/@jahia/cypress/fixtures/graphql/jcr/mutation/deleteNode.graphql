@@ -1,0 +1,5 @@
+mutation deleteNode($pathOrId: String!, $workspace: Workspace!) {
+    jcr(workspace: $workspace) {
+        deleteNode(pathOrId: $pathOrId)
+    }
+}

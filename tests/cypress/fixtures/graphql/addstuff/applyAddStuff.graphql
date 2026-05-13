@@ -1,0 +1,17 @@
+mutation applyAddStuff(
+    $pathOrId: String!
+    $headTop: String
+    $head: String
+    $bodyTop: String
+    $body: String
+) {
+    jcr(workspace: EDIT) {
+        mutateNode(pathOrId: $pathOrId) {
+            addMixins(mixins: ["jmix:addStuff"])
+            ht: mutateProperty(name: "addStuffHeadTop") { setValue(value: $headTop) }
+            h:  mutateProperty(name: "addStuffHead")    { setValue(value: $head) }
+            bt: mutateProperty(name: "addStuffBodyTop") { setValue(value: $bodyTop) }
+            b:  mutateProperty(name: "addStuffBody")    { setValue(value: $body) }
+        }
+    }
+}
