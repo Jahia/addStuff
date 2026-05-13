@@ -1,0 +1,36 @@
+{
+    "addstuff": {
+        "siteSettings": {
+            "title": "Add Stuff",
+            "description": "Fügen Sie jeder Seite dieser Website benutzerdefinierte Code-Snippets hinzu. Nur in der Vorschau und im Live-Modus sichtbar.",
+            "headTop": {
+                "help": "Wird vor allem anderen geladen. Ideal für Tag-Manager (z. B. Google Tag Manager Snippet)."
+            },
+            "head": {
+                "help": "Wird vor dem Rendern der Seite geladen. Ideal für Stylesheets, Schriftarten oder Meta-Tags."
+            },
+            "bodyTop": {
+                "help": "Erstes Element im Body. Ideal für den GTM-Noscript-Fallback oder Cookie-Zustimmungsbanner."
+            },
+            "body": {
+                "help": "Wird nach dem gesamten Seiteninhalt geladen. Ideal für Analysen, Chat-Widgets oder verzögerte Skripte."
+            },
+            "save": {
+                "success": "Ihre Änderungen wurden gespeichert.",
+                "error": "Speichern fehlgeschlagen — bitte prüfen Sie die Server-Logs."
+            }
+        },
+        "label": {
+            "save": "Speichern",
+            "saving": "Wird gespeichert…",
+            "cancel": "Abbrechen",
+            "loading": "Wird geladen…"
+        }
+    },
+    "jmix_addStuff": {
+        "addStuffHeadTop": "Beginn von <head>",
+        "addStuffHead": "Ende von <head>",
+        "addStuffBodyTop": "Beginn von <body>",
+        "addStuffBody": "Ende von <body>"
+    }
+}

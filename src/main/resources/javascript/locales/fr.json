@@ -1,0 +1,36 @@
+{
+    "addstuff": {
+        "siteSettings": {
+            "title": "Add Stuff",
+            "description": "Ajoutez des extraits de code personnalisés à chaque page de ce site. Visible uniquement en modes aperçu et live.",
+            "headTop": {
+                "help": "Chargé avant tout le reste. Idéal pour les gestionnaires de balises (ex. : extrait Google Tag Manager)."
+            },
+            "head": {
+                "help": "Chargé avant le rendu de la page. Idéal pour les feuilles de style, les polices ou les balises meta."
+            },
+            "bodyTop": {
+                "help": "Premier élément dans le body. Idéal pour le fallback noscript GTM ou les bannières de consentement aux cookies."
+            },
+            "body": {
+                "help": "Chargé après tout le contenu de la page. Idéal pour les analyses, les widgets de chat ou les scripts différés."
+            },
+            "save": {
+                "success": "Vos modifications ont été enregistrées.",
+                "error": "Échec de l'enregistrement — consultez les journaux du serveur."
+            }
+        },
+        "label": {
+            "save": "Enregistrer",
+            "saving": "Enregistrement…",
+            "cancel": "Annuler",
+            "loading": "Chargement…"
+        }
+    },
+    "jmix_addStuff": {
+        "addStuffHeadTop": "Début de <head>",
+        "addStuffHead": "Fin de <head>",
+        "addStuffBodyTop": "Début de <body>",
+        "addStuffBody": "Fin de <body>"
+    }
+}

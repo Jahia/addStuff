@@ -1,7 +1,36 @@
 {
     "addstuff": {
         "siteSettings": {
-            "title": "Add Stuff"
+            "title": "Add Stuff",
+            "description": "Add custom code snippets to every page of this site. Visible in preview and live modes only.",
+            "headTop": {
+                "help": "Loaded before anything else. Ideal for tag managers (e.g. Google Tag Manager snippet)."
+            },
+            "head": {
+                "help": "Loaded before the page renders. Ideal for stylesheets, fonts, or meta tags."
+            },
+            "bodyTop": {
+                "help": "First element inside the body. Ideal for GTM noscript fallback or cookie consent banners."
+            },
+            "body": {
+                "help": "Loaded after all page content. Ideal for analytics, chat widgets, or deferred scripts."
+            },
+            "save": {
+                "success": "Your stuff has been saved.",
+                "error": "Failed to save — please check server logs."
+            }
+        },
+        "label": {
+            "save": "Save",
+            "saving": "Saving…",
+            "cancel": "Cancel",
+            "loading": "Loading…"
         }
+    },
+    "jmix_addStuff": {
+        "addStuffHeadTop": "Start of <head>",
+        "addStuffHead": "End of <head>",
+        "addStuffBodyTop": "Start of <body>",
+        "addStuffBody": "End of <body>"
     }
 }
