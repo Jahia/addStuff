@@ -3,9 +3,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
   "version": 1,
-  "serialNumber": "urn:uuid:ade96767-b877-4142-9327-7cc4efd0d4c2",
+  "serialNumber": "urn:uuid:96fead13-9654-46fb-85b3-3b897cafd88f",
   "metadata": {
-    "timestamp": "2026-05-13T14:04:58.324Z",
+    "timestamp": "2026-05-13T14:05:47.455Z",
     "tools": [
       {
         "name": "webpack",
