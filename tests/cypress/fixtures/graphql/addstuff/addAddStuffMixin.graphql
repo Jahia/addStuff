@@ -1,0 +1,7 @@
+mutation addAddStuffMixin($pathOrId: String!) {
+    jcr(workspace: EDIT) {
+        mutateNode(pathOrId: $pathOrId) {
+            addMixins(mixins: ["jmix:addStuff"])
+        }
+    }
+}

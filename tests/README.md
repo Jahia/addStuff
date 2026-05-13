@@ -16,8 +16,8 @@ site level and page level.
 | Jahia | 8.2.3.0 | EE, with `addstuff` module deployed |
 | Template set | `bootstrap5-templates-starter` | Required to render test pages |
 
-> The `addstuff` OSGi bundle must be deployed and active before running the tests.
-> `createTestSite()` automatically enables the module on the test site via `enableModule`.
+> `01-Tests.cy.ts` automatically deploys the JAR via the Jahia provisioning API before the other tests run.
+> The JAR must have been built first: `cd .. && mvn clean install`
 
 ---
 
@@ -80,8 +80,12 @@ tests/
 ├── cypress/
 │   ├── e2e/                    # Spec files (run in numbered order)
 │   ├── fixtures/
-│   │   └── graphql/addstuff/
-│   │       └── applyAddStuff.graphql   # Custom mutation: mixin + all 4 properties
+│   │   ├── graphql/addstuff/
+│   │   │   ├── addAddStuffMixin.graphql       # Step 1: add jmix:addStuff mixin to a node
+│   │   │   ├── setAddStuffProperties.graphql  # Step 2: set the four injection properties
+│   │   │   └── applyAddStuff.graphql          # (legacy combined mutation, kept for reference)
+│   │   └── groovy/addstuff/
+│   │       └── flushHtmlCache.groovy          # Flush all Jahia HTML cache instances
 │   ├── plugins/
 │   │   └── index.js            # Cypress plugin registration (@jahia/cypress)
 │   └── support/
@@ -94,18 +98,20 @@ tests/
 
 > All standard Jahia fixtures (`graphql/jcr/mutation/*.graphql`, `groovy/admin/*.groovy`, etc.)
 > are loaded automatically from the `@jahia/cypress` package via its built-in fallback mechanism.
-> Only `applyAddStuff.graphql` is project-specific.
 
 ### Shared helpers (`support/addstuff.ts`)
 
 | Helper | Purpose |
 |--------|---------|
-| `pageUrl(name, lang?)` | Build the live render URL for a test page |
+| `pageUrl(name)` | Live render URL for a test page (`/sites/…/home/<name>.html`) |
+| `pageUrlDefault(name)` | Default (edit) workspace URL — authenticated only, for debugging |
 | `createTestSite()` | Create the `addstufftest` site with `bootstrap5-templates-starter` |
 | `deleteTestSite()` | Delete the `addstufftest` site |
 | `createTestPage(name)` | Add a `jnt:page` under `/home` |
-| `publishNode(pathOrId)` | Publish a node and its subtree (includes a 3 s propagation wait). Not needed for the site node — `jnt:virtualsite` is autopublished. |
-| `applyAddStuff(pathOrId, props)` | Apply `jmix:addStuff` mixin + set the four injection properties on any existing node |
+| `publishNode(pathOrId, options?)` | Publish a node to the live workspace. `options.includeSubTree` (default `true`) and `options.waitMs` (default `3000`) control subtree publication and propagation wait. Always call explicitly — autopublish timing is non-deterministic. |
+| `applyAddStuff(pathOrId, props)` | Apply `jmix:addStuff` mixin and set the four injection properties on any node (two sequential GraphQL calls to guarantee mixin is applied before properties are set) |
+| `flushHtmlCache()` | Flush all Jahia HTML render caches via Groovy. Required after mutating the site node because Jahia does not automatically invalidate page cache entries when only the site node changes in the live workspace. Uses both `ModuleCacheProvider` and `CacheManager.ALL_CACHE_MANAGERS` — `CacheManager.getInstance()` alone is insufficient as Jahia uses named cache manager instances. |
+| `waitForContent(page, marker, timeoutMs?)` | Poll the live URL until the marker appears in the response body (default 30 s). Use after `flushHtmlCache()` to wait for the fresh render to propagate instead of a fixed `cy.wait`. |
 
 ---
 

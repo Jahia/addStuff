@@ -1,27 +1,27 @@
-import {createTestSite, createTestPage, publishNode, pageUrl} from '../support/addstuff'
+import {deployAddStuffModule, createTestSite, deleteTestSite, createTestPage, publishNode, pageUrl} from '../support/addstuff'
 
 describe('AddStuff — Infrastructure', () => {
     before(() => {
         cy.login()
+        deployAddStuffModule()
+        deleteTestSite()
         createTestSite()
         createTestPage('test-page')
         createTestPage('other-page')
         publishNode('/sites/addstufftest/home')
     })
 
-    // Verify the addstuff OSGi bundle is deployed and active before running any other test.
+    // Verify the addstuff OSGi bundle is deployed and started before running any other test.
     // If this fails, build and deploy the module first:
     //   cd .. && mvn clean install
     // then copy the JAR to your Jahia instance (or use the Jahia admin module deployment UI).
-    it('addstuff module is deployed and active', () => {
+    it('addstuff module is deployed and started', () => {
         cy.apollo({
-            queryFile: 'graphql/jcr/query/getStartedModulesVersion.graphql',
-            variables: {moduleId: 'addstuff'}
+            queryFile: 'graphql/jcr/query/getStartedModulesVersion.graphql'
         }).then((resp: any) => {
-            const modules = resp?.data?.admin?.jahia?.modules
-            expect(modules, 'addstuff module not found — deploy the OSGi bundle first').to.have.length.greaterThan(0)
-            const active = modules.find((m: any) => m.state === 'Active' || m.state === 'ACTIVE')
-            expect(active, `addstuff module found but not Active (state: ${modules[0]?.state})`).to.exist
+            const modules: any[] = resp?.data?.dashboard?.modules ?? []
+            const addstuff = modules.find((m: any) => m.id === 'addstuff')
+            expect(addstuff, 'addstuff module not found — deploy the OSGi bundle first').to.exist
         })
     })
 

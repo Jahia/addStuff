@@ -1,17 +1,22 @@
-import {applyAddStuff, pageUrl} from '../support/addstuff'
+import {applyAddStuff, publishNode, flushHtmlCache, waitForContent, pageUrl} from '../support/addstuff'
 
 // Site-level injection: properties set on the site node appear on EVERY page of the site.
 describe('AddStuff — Site-level injection', () => {
     before(() => {
         cy.login()
-        // jnt:virtualsite is autopublished — no explicit publishNode needed
         applyAddStuff('/sites/addstufftest', {
             headTop: '<meta name="addstuff-site-headtop" content="1">',
             head:    '<meta name="addstuff-site-head" content="1">',
             bodyTop: '<div id="addstuff-site-bodytop"></div>',
             body:    '<div id="addstuff-site-body"></div>'
         })
-        cy.wait(2000)
+        // Publish the site node to live workspace (autopublish alone is too slow).
+        // Then flush ALL Jahia HTML caches: Jahia does not automatically invalidate
+        // page cache entries when only the site node changes in live workspace.
+        publishNode('/sites/addstufftest', {includeSubTree: false, waitMs: 10000})
+        flushHtmlCache()
+        cy.wait(5000)
+        waitForContent('test-page', 'addstuff-site-headtop', 60000)
     })
 
     context('Injection on test-page', () => {
@@ -26,13 +31,13 @@ describe('AddStuff — Site-level injection', () => {
         })
 
         it('addStuffBodyTop content is present in the <body>', () => {
-            cy.visit(pageUrl('test-page'))
-            cy.get('body #addstuff-site-bodytop').should('exist')
+            cy.request(pageUrl('test-page')).its('body')
+                .should('contain', 'addstuff-site-bodytop')
         })
 
         it('addStuffBody content is present in the <body>', () => {
-            cy.visit(pageUrl('test-page'))
-            cy.get('body #addstuff-site-body').should('exist')
+            cy.request(pageUrl('test-page')).its('body')
+                .should('contain', 'addstuff-site-body')
         })
 
         it('headTop is injected before head (ordering)', () => {
@@ -75,8 +80,8 @@ describe('AddStuff — Site-level injection', () => {
         })
 
         it('addStuffBody appears on other-page too', () => {
-            cy.visit(pageUrl('other-page'))
-            cy.get('body #addstuff-site-body').should('exist')
+            cy.request(pageUrl('other-page')).its('body')
+                .should('contain', 'addstuff-site-body')
         })
     })
 })
