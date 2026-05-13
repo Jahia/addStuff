@@ -15,6 +15,9 @@ module.exports = (env, argv) => ({
     resolve: {
         extensions: ['.js', '.jsx']
     },
+    externals: {
+        '@jahia/app-shell/bootstrap': 'appShell'
+    },
     module: {
         rules: [
             {
