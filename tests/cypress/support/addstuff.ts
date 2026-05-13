@@ -45,6 +45,17 @@ export const pageUrl = (pageName: string) =>
 export const homeUrl = () =>
     `/sites/${siteKey}/home.html`
 
+export const adminSettingsUrl = () =>
+    `/jahia/administration/${siteKey}/addStuffSiteSettings`
+
+export const setCodeMirrorValue = (index: number, value: string) => {
+    cy.window().then(win => {
+        const editors = win.document.querySelectorAll('.addstuff-cm-field .CodeMirror')
+        const cm = (editors[index] as any).CodeMirror
+        cm.setValue(value)
+    })
+}
+
 export const pageUrlDefault = (pageName: string) =>
     `/cms/render/default/en/sites/${siteKey}/home/${pageName}.html`
 
