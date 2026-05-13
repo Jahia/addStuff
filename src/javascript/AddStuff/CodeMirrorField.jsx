@@ -73,7 +73,19 @@ export function CodeMirrorField({value, onChange}) {
         // otherwise CodeMirror measures the gutter at 1px and code overlaps line numbers.
         setTimeout(() => cm.refresh(), 0);
 
+        // Re-render when the container becomes visible after being hidden (e.g. Jahia
+        // Content Editor "Options" tab): CodeMirror measures 0px while the tab is hidden
+        // and won't repaint on its own when the tab is shown. ResizeObserver fires as soon
+        // as the container gains a non-zero width.
+        const observer = new ResizeObserver(entries => {
+            if (entries[0].contentRect.width > 0) {
+                cm.refresh();
+            }
+        });
+        observer.observe(containerRef.current);
+
         return () => {
+            observer.disconnect();
             cmRef.current = null;
         };
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
