@@ -17,7 +17,19 @@ const GQL_QUERY = `
     }
 `;
 
-const GQL_MUTATION = `
+// Two separate mutations: Jahia may resolve addMixins and mutateProperty concurrently
+// within a single mutateNode block, causing properties to be set before the mixin exists.
+const GQL_ADD_MIXIN = `
+    mutation addAddStuffMixin($path: String!) {
+        jcr {
+            mutateNode(pathOrId: $path) {
+                addMixins(mixins: ["jmix:addStuff"])
+            }
+        }
+    }
+`;
+
+const GQL_SET_PROPERTIES = `
     mutation setAddStuffProperties(
         $path: String!,
         $addStuffHeadTop: String!, $addStuffHead: String!,
@@ -25,7 +37,6 @@ const GQL_MUTATION = `
     ) {
         jcr {
             mutateNode(pathOrId: $path) {
-                addMixins(mixins: ["jmix:addStuff"])
                 p1: mutateProperty(name: "addStuffHeadTop") { setValue(type: STRING, value: $addStuffHeadTop) }
                 p2: mutateProperty(name: "addStuffHead")    { setValue(type: STRING, value: $addStuffHead) }
                 p3: mutateProperty(name: "addStuffBodyTop") { setValue(type: STRING, value: $addStuffBodyTop) }
@@ -138,7 +149,8 @@ export function AddStuffSettings({siteKey}) {
     const handleSave = useCallback(() => {
         setSaving(true);
         setSaveStatus(null);
-        graphql(GQL_MUTATION, {path: sitePath, ...values})
+        graphql(GQL_ADD_MIXIN, {path: sitePath})
+            .then(() => graphql(GQL_SET_PROPERTIES, {path: sitePath, ...values}))
             .then(data => {
                 setSaveStatus(data.errors?.length > 0 ? 'error' : 'success');
             })
