@@ -47,6 +47,7 @@ module.exports = (env, argv) => ({
             },
             {
                 test: /\.css$/,
+                exclude: /node_modules[\\/]@jahia[\\/]moonstone/,
                 use: ['style-loader', 'css-loader']
             },
             ...moonstone

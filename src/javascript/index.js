@@ -1,4 +1,1 @@
-import('@jahia/app-shell/bootstrap').then(res => {
-    window.jahia = res;
-    res.startAppShell(window.appShell.remotes, window.appShell.targetId);
-});
+// Module federation remote — registration is handled by init.js via remoteEntry.js
