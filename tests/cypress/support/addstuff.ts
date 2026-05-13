@@ -65,7 +65,7 @@ export const createTestPage = (pageName: string) => {
         primaryNodeType: 'jnt:page',
         properties: [
             {name: 'jcr:title', value: pageName, language: 'en'},
-            {name: 'j:templateName', value: 'empty-templates'}
+            {name: 'j:templateName', value: 'empty'}
         ],
         children: [{name: 'pagecontent', primaryNodeType: 'jnt:contentList'}]
     })
