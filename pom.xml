@@ -57,6 +57,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
         <jahia-module-signature>MC0CFQCDZKU6y8Ab3BzzD4GVjSuC5Z/lMwIUKTQVQDBkGwj5DkSrp8elD3EVgQs=</jahia-module-signature>
         <jahia-depends>default,siteSettings</jahia-depends>
         <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
+        <yarn.arguments>build:production</yarn.arguments>
     </properties>
 
     <repositories>
@@ -85,6 +86,41 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
                         <_dsannotations>*</_dsannotations>
                     </instructions>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.15.0</version>
+                <executions>
+                    <execution>
+                        <id>npm install node and yarn</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>install-node-and-yarn</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v22.6.0</nodeVersion>
+                            <yarnVersion>v1.22.21</yarnVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>yarn install</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>yarn post-install</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>${yarn.arguments}</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
