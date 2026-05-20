@@ -1,105 +1,91 @@
 import React, {useEffect, useRef} from 'react';
-import CodeMirror from 'codemirror';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/addon/fold/foldgutter.css';
-import 'codemirror/mode/xml/xml';
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/css/css';
-import 'codemirror/mode/htmlmixed/htmlmixed';
-import 'codemirror/addon/fold/foldcode';
-import 'codemirror/addon/fold/xml-fold';
-import 'codemirror/addon/fold/brace-fold';
-import 'codemirror/addon/fold/comment-fold';
-import 'codemirror/addon/fold/foldgutter';
-import 'codemirror/addon/edit/closetag';
-import 'codemirror/addon/edit/closebrackets';
-import 'codemirror/addon/edit/matchbrackets';
+import {EditorState} from '@codemirror/state';
+import {EditorView, keymap, lineNumbers} from '@codemirror/view';
+import {defaultKeymap, indentWithTab} from '@codemirror/commands';
+import {foldGutter, foldKeymap} from '@codemirror/language';
+import {html} from '@codemirror/lang-html';
+import {closeBrackets, closeBracketsKeymap} from '@codemirror/autocomplete';
 
-// Global styles injected once — CodeMirror class names are third-party globals
-// and must not be locally scoped by CSS modules.
-const ADDSTUFF_STYLES = `
-.addstuff-cm-field .CodeMirror { height: 140px; font-size: 12px; }
-.CodeMirror-foldgutter-open:after  { content: "\\25BE"; }
-.CodeMirror-foldgutter-folded:after { content: "\\25B8"; }
-`;
+const editorTheme = EditorView.theme({
+    '&': {fontSize: '12px'},
+    '.cm-scroller': {overflow: 'auto', height: '140px'},
+    '&.cm-focused': {outline: '2px solid #4a90d9', outlineOffset: '1px'}
+});
 
-let stylesInjected = false;
-function injectStyles() {
-    if (stylesInjected) {
-        return;
-    }
-
-    const style = document.createElement('style');
-    style.textContent = ADDSTUFF_STYLES;
-    document.head.appendChild(style);
-    stylesInjected = true;
-}
-
-export function CodeMirrorField({value, onChange}) {
+export function CodeMirrorField({value, onChange, id, 'aria-labelledby': ariaLabelledBy, 'aria-describedby': ariaDescribedBy}) {
     const containerRef = useRef(null);
-    const cmRef = useRef(null);
+    const viewRef = useRef(null);
     const valueRef = useRef(value);
 
-    // Mount: create the CodeMirror instance
     useEffect(() => {
-        injectStyles();
-
-        const cm = CodeMirror(containerRef.current, {
-            value: value || '',
-            mode: 'htmlmixed',
-            lineNumbers: true,
-            lineWrapping: true,
-            smartIndent: true,
-            autoCloseTags: true,
-            autoCloseBrackets: true,
-            matchBrackets: true,
-            foldGutter: true,
-            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-            theme: 'default',
-            tabSize: 2
+        const view = new EditorView({
+            state: EditorState.create({
+                doc: value || '',
+                extensions: [
+                    html(),
+                    lineNumbers(),
+                    foldGutter(),
+                    closeBrackets(),
+                    EditorView.lineWrapping,
+                    editorTheme,
+                    keymap.of([
+                        {key: 'Escape', run: v => { v.dom.blur(); return true; }},
+                        indentWithTab,
+                        ...closeBracketsKeymap,
+                        ...defaultKeymap,
+                        ...foldKeymap
+                    ]),
+                    EditorView.updateListener.of(update => {
+                        if (update.docChanged) {
+                            const newValue = update.state.doc.toString();
+                            valueRef.current = newValue;
+                            if (onChange) {
+                                onChange(newValue);
+                            }
+                        }
+                    })
+                ]
+            }),
+            parent: containerRef.current
         });
 
-        cmRef.current = cm;
+        // ARIA wiring — CM6 renders a contenteditable div; set role + labels on it
+        view.dom.setAttribute('role', 'textbox');
+        view.dom.setAttribute('aria-multiline', 'true');
+        if (ariaLabelledBy) {
+            view.dom.setAttribute('aria-labelledby', ariaLabelledBy);
+        }
+
+        if (ariaDescribedBy) {
+            view.dom.setAttribute('aria-describedby', ariaDescribedBy);
+        }
+
+        // Expose view on the container element so Cypress tests can read/set values
+        containerRef.current._cmView = view;
+
+        viewRef.current = view;
         valueRef.current = value || '';
 
-        cm.on('change', editor => {
-            valueRef.current = editor.getValue();
-            if (onChange) {
-                onChange(editor.getValue());
-            }
-        });
-
-        // Defer refresh so the container has its final layout dimensions —
-        // otherwise CodeMirror measures the gutter at 1px and code overlaps line numbers.
-        setTimeout(() => cm.refresh(), 0);
-
-        // Re-render when the container becomes visible after being hidden (e.g. Jahia
-        // Content Editor "Options" tab): CodeMirror measures 0px while the tab is hidden
-        // and won't repaint on its own when the tab is shown. ResizeObserver fires as soon
-        // as the container gains a non-zero width.
-        const observer = new ResizeObserver(entries => {
-            if (entries[0].contentRect.width > 0) {
-                cm.refresh();
-            }
-        });
-        observer.observe(containerRef.current);
-
         return () => {
-            observer.disconnect();
-            cmRef.current = null;
+            view.destroy();
+            viewRef.current = null;
         };
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    // Sync external value changes (e.g. language switch in content editor)
+    // Sync external value changes (e.g. Cancel reloads saved values)
     useEffect(() => {
-        if (cmRef.current && value !== undefined && value !== valueRef.current) {
-            cmRef.current.setValue(value || '');
+        const view = viewRef.current;
+        if (view && value !== undefined && value !== valueRef.current) {
+            view.dispatch({
+                changes: {from: 0, to: view.state.doc.length, insert: value || ''}
+            });
             valueRef.current = value || '';
         }
     }, [value]);
 
     return (
         <div
+            id={id}
             className="addstuff-cm-field"
             ref={containerRef}
             style={{border: '1px solid #ddd', borderRadius: '3px'}}
