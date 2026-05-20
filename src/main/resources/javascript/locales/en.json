@@ -4,6 +4,7 @@
             "title": "Add Stuff",
             "description": "Add custom code snippets to every page of this site. Visible in preview and live modes only.",
             "saved": "Your stuff has been saved",
+            "loading": "Loading settings…",
             "headTop": { "help": "Loaded before anything else. Ideal for tag managers (e.g. Google Tag Manager snippet)." },
             "head":    { "help": "Loaded before the page renders. Ideal for stylesheets, fonts, or meta tags." },
             "bodyTop": { "help": "First element inside the body. Ideal for GTM noscript fallback or cookie consent banners." },
