@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Button, Loader, Typography} from '@jahia/moonstone';
 import {CodeMirrorField} from './CodeMirrorField';
@@ -108,11 +108,25 @@ const FIELDS_GRID_STYLE = {
     gap: '16px'
 };
 
-const FIELD_LABEL_STYLE = {fontFamily: 'var(--font-monospace, monospace)', fontSize: '13px', fontWeight: 'bold', display: 'block', marginBottom: '2px'};
+const FIELD_LABEL_STYLE = {
+    fontFamily: 'var(--font-monospace, monospace)',
+    fontSize: '13px',
+    fontWeight: 'bold',
+    display: 'block',
+    marginBottom: '2px'
+};
+
+// #767676 on white = 4.54:1 — meets WCAG 1.4.3 AA minimum (was #aaa = 2.3:1, failed)
+const HELP_TEXT_STYLE = {
+    color: '#767676',
+    display: 'block',
+    marginBottom: '6px'
+};
 
 export function AddStuffSettings({siteKey}) {
     const {t} = useTranslation('addstuff');
     const sitePath = `/sites/${siteKey}`;
+    const actionBarRef = useRef(null);
 
     const [installed, setInstalled] = useState(null);
     const [values, setValues] = useState({
@@ -155,7 +169,10 @@ export function AddStuffSettings({siteKey}) {
                 setSaveStatus(data.errors?.length > 0 ? 'error' : 'success');
             })
             .catch(() => setSaveStatus('error'))
-            .finally(() => setSaving(false));
+            .finally(() => {
+                setSaving(false);
+                actionBarRef.current?.focus();
+            });
     }, [sitePath, values]);
 
     const handleCancel = useCallback(() => {
@@ -172,6 +189,7 @@ export function AddStuffSettings({siteKey}) {
                     });
                 }
             });
+        actionBarRef.current?.focus();
     }, [sitePath]);
 
     useEffect(() => {
@@ -183,7 +201,11 @@ export function AddStuffSettings({siteKey}) {
 
     if (installed === null) {
         return (
-            <div style={{display: 'flex', justifyContent: 'center', padding: '48px'}}>
+            <div
+                role="status"
+                aria-label={t('addstuff.siteSettings.loading')}
+                style={{display: 'flex', justifyContent: 'center', padding: '48px'}}
+            >
                 <Loader size="big"/>
             </div>
         );
@@ -206,30 +228,40 @@ export function AddStuffSettings({siteKey}) {
                 {t('addstuff.siteSettings.description')}
             </Typography>
 
-            {/* <head> section */}
-            <div style={SECTION_STYLE}>
+            {/* <head> group — role="group" + aria-labelledby satisfies WCAG 1.3.1 (ARIA17 technique) */}
+            <div role="group" aria-labelledby="addstuff-head-section" style={SECTION_STYLE}>
                 <div style={SECTION_HEADER_STYLE.head}>
-                    <Typography variant="subheading" weight="bold" style={{fontFamily: 'monospace', color: '#2c5282'}}>
+                    <Typography id="addstuff-head-section" variant="subheading" weight="bold" style={{fontFamily: 'monospace', color: '#2c5282'}}>
                         {'<head>'}
                     </Typography>
                 </div>
                 <div style={FIELDS_GRID_STYLE}>
                     <div>
-                        <span style={FIELD_LABEL_STYLE}>{t('jmix_addStuff.addStuffHeadTop')}</span>
-                        <Typography variant="caption" style={{color: 'var(--color-gray_dark03, #aaa)', display: 'block', marginBottom: '6px'}}>
+                        <label id="addstuff-headTop-label" style={FIELD_LABEL_STYLE}>
+                            {t('jmix_addStuff.addStuffHeadTop')}
+                        </label>
+                        <Typography id="addstuff-headTop-help" variant="caption" style={HELP_TEXT_STYLE}>
                             {t('addstuff.siteSettings.headTop.help')}
                         </Typography>
                         <CodeMirrorField
+                            id="addstuff-headTop"
+                            aria-labelledby="addstuff-headTop-label"
+                            aria-describedby="addstuff-headTop-help"
                             value={values.addStuffHeadTop}
                             onChange={v => setValues(prev => ({...prev, addStuffHeadTop: v}))}
                         />
                     </div>
                     <div>
-                        <span style={FIELD_LABEL_STYLE}>{t('jmix_addStuff.addStuffHead')}</span>
-                        <Typography variant="caption" style={{color: 'var(--color-gray_dark03, #aaa)', display: 'block', marginBottom: '6px'}}>
+                        <label id="addstuff-head-label" style={FIELD_LABEL_STYLE}>
+                            {t('jmix_addStuff.addStuffHead')}
+                        </label>
+                        <Typography id="addstuff-head-help" variant="caption" style={HELP_TEXT_STYLE}>
                             {t('addstuff.siteSettings.head.help')}
                         </Typography>
                         <CodeMirrorField
+                            id="addstuff-head"
+                            aria-labelledby="addstuff-head-label"
+                            aria-describedby="addstuff-head-help"
                             value={values.addStuffHead}
                             onChange={v => setValues(prev => ({...prev, addStuffHead: v}))}
                         />
@@ -237,30 +269,40 @@ export function AddStuffSettings({siteKey}) {
                 </div>
             </div>
 
-            {/* <body> section */}
-            <div style={SECTION_STYLE}>
+            {/* <body> group */}
+            <div role="group" aria-labelledby="addstuff-body-section" style={SECTION_STYLE}>
                 <div style={SECTION_HEADER_STYLE.body}>
-                    <Typography variant="subheading" weight="bold" style={{fontFamily: 'monospace', color: '#276534'}}>
+                    <Typography id="addstuff-body-section" variant="subheading" weight="bold" style={{fontFamily: 'monospace', color: '#276534'}}>
                         {'<body>'}
                     </Typography>
                 </div>
                 <div style={FIELDS_GRID_STYLE}>
                     <div>
-                        <span style={FIELD_LABEL_STYLE}>{t('jmix_addStuff.addStuffBodyTop')}</span>
-                        <Typography variant="caption" style={{color: 'var(--color-gray_dark03, #aaa)', display: 'block', marginBottom: '6px'}}>
+                        <label id="addstuff-bodyTop-label" style={FIELD_LABEL_STYLE}>
+                            {t('jmix_addStuff.addStuffBodyTop')}
+                        </label>
+                        <Typography id="addstuff-bodyTop-help" variant="caption" style={HELP_TEXT_STYLE}>
                             {t('addstuff.siteSettings.bodyTop.help')}
                         </Typography>
                         <CodeMirrorField
+                            id="addstuff-bodyTop"
+                            aria-labelledby="addstuff-bodyTop-label"
+                            aria-describedby="addstuff-bodyTop-help"
                             value={values.addStuffBodyTop}
                             onChange={v => setValues(prev => ({...prev, addStuffBodyTop: v}))}
                         />
                     </div>
                     <div>
-                        <span style={FIELD_LABEL_STYLE}>{t('jmix_addStuff.addStuffBody')}</span>
-                        <Typography variant="caption" style={{color: 'var(--color-gray_dark03, #aaa)', display: 'block', marginBottom: '6px'}}>
+                        <label id="addstuff-body-label" style={FIELD_LABEL_STYLE}>
+                            {t('jmix_addStuff.addStuffBody')}
+                        </label>
+                        <Typography id="addstuff-body-help" variant="caption" style={HELP_TEXT_STYLE}>
                             {t('addstuff.siteSettings.body.help')}
                         </Typography>
                         <CodeMirrorField
+                            id="addstuff-body"
+                            aria-labelledby="addstuff-body-label"
+                            aria-describedby="addstuff-body-help"
                             value={values.addStuffBody}
                             onChange={v => setValues(prev => ({...prev, addStuffBody: v}))}
                         />
@@ -268,8 +310,8 @@ export function AddStuffSettings({siteKey}) {
                 </div>
             </div>
 
-            {/* Actions */}
-            <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+            {/* Actions — tabIndex={-1} so focus() works after save/cancel */}
+            <div ref={actionBarRef} tabIndex={-1} style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
                 <Button
                     variant="primary"
                     label={t('label.save')}
@@ -281,16 +323,19 @@ export function AddStuffSettings({siteKey}) {
                     isDisabled={saving}
                     onClick={handleCancel}
                 />
-                {saveStatus === 'success' && (
-                    <Typography variant="body" style={{color: 'var(--color-utility_positive, #27ae60)'}}>
-                        {t('addstuff.siteSettings.saved')}
-                    </Typography>
-                )}
-                {saveStatus === 'error' && (
-                    <Typography variant="body" style={{color: 'var(--color-utility_danger, #c0392b)'}}>
-                        {t('addstuff.siteSettings.saveError', 'Save failed — please try again.')}
-                    </Typography>
-                )}
+                {/* Always rendered so screen readers register the live region on page load */}
+                <div role="status" aria-live="polite" aria-atomic="true" style={{minHeight: '1.5em'}}>
+                    {saveStatus === 'success' && (
+                        <Typography variant="body" style={{color: 'var(--color-utility_positive, #27ae60)'}}>
+                            {t('addstuff.siteSettings.saved')}
+                        </Typography>
+                    )}
+                    {saveStatus === 'error' && (
+                        <Typography variant="body" style={{color: 'var(--color-utility_danger, #c0392b)'}}>
+                            {t('addstuff.siteSettings.saveError', 'Save failed — please try again.')}
+                        </Typography>
+                    )}
+                </div>
             </div>
         </div>
     );
