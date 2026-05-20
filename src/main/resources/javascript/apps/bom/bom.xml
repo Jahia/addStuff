@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bom xmlns="http://cyclonedx.org/schema/bom/1.4" version="1" serialNumber="urn:uuid:28ae4c06-bf18-4661-a48f-91158215759e">
+<bom xmlns="http://cyclonedx.org/schema/bom/1.4" version="1" serialNumber="urn:uuid:4e53445b-3d97-4269-b4fe-3cef5acb8493">
   <metadata>
-    <timestamp>2026-05-13T15:32:23.023Z</timestamp>
+    <timestamp>2026-05-20T10:56:45.253Z</timestamp>
     <tools>
       <tool>
         <name>webpack</name>
@@ -22,25 +22,6 @@
           </reference>
           <reference type="issue-tracker">
             <url>https://github.com/CycloneDX/cyclonedx-webpack-plugin/issues</url>
-            <comment>as detected from PackageJson property "bugs.url"</comment>
-          </reference>
-        </externalReferences>
-      </tool>
-      <tool>
-        <vendor>@cyclonedx</vendor>
-        <name>cyclonedx-library</name>
-        <version>10.0.0</version>
-        <externalReferences>
-          <reference type="vcs">
-            <url>git+https://github.com/CycloneDX/cyclonedx-javascript-library.git</url>
-            <comment>as detected from PackageJson property "repository.url"</comment>
-          </reference>
-          <reference type="website">
-            <url>https://github.com/CycloneDX/cyclonedx-javascript-library#readme</url>
-            <comment>as detected from PackageJson property "homepage"</comment>
-          </reference>
-          <reference type="issue-tracker">
-            <url>https://github.com/CycloneDX/cyclonedx-javascript-library/issues</url>
             <comment>as detected from PackageJson property "bugs.url"</comment>
           </reference>
         </externalReferences>
@@ -75,80 +56,461 @@
     </component>
   </metadata>
   <components>
-    <component type="library" bom-ref="codemirror@5.65.21">
+    <component type="library" bom-ref="@codemirror/state@6.6.0">
       <author>Marijn Haverbeke</author>
-      <name>codemirror</name>
-      <version>5.65.21</version>
-      <description>Full-featured in-browser code editor</description>
+      <group>@codemirror</group>
+      <name>state</name>
+      <version>6.6.0</version>
+      <description>Editor state data structures for the CodeMirror code editor</description>
       <licenses>
         <license>
           <id>MIT</id>
         </license>
       </licenses>
-      <purl>pkg:npm/codemirror@5.65.21?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2FCodeMirror.git</purl>
+      <purl>pkg:npm/%40codemirror/state@6.6.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Fstate.git</purl>
       <externalReferences>
         <reference type="vcs">
-          <url>git+https://github.com/codemirror/CodeMirror.git</url>
+          <url>git+https://github.com/codemirror/state.git</url>
           <comment>as detected from PackageJson property "repository.url"</comment>
         </reference>
         <reference type="website">
-          <url>https://codemirror.net/5/</url>
+          <url>https://github.com/codemirror/state#readme</url>
           <comment>as detected from PackageJson property "homepage"</comment>
         </reference>
         <reference type="issue-tracker">
-          <url>http://github.com/codemirror/CodeMirror/issues</url>
+          <url>https://github.com/codemirror/state/issues</url>
           <comment>as detected from PackageJson property "bugs.url"</comment>
         </reference>
       </externalReferences>
     </component>
-    <component type="library" bom-ref="style-loader@3.3.4">
-      <author>Tobias Koppers @sokra</author>
-      <name>style-loader</name>
-      <version>3.3.4</version>
-      <description>style loader module for webpack</description>
+    <component type="library" bom-ref="@codemirror/view@6.43.0">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>view</name>
+      <version>6.43.0</version>
+      <description>DOM view component for the CodeMirror code editor</description>
       <licenses>
         <license>
           <id>MIT</id>
         </license>
       </licenses>
-      <purl>pkg:npm/style-loader@3.3.4?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fwebpack-contrib%2Fstyle-loader.git</purl>
+      <purl>pkg:npm/%40codemirror/view@6.43.0?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Fview.git</purl>
       <externalReferences>
         <reference type="vcs">
-          <url>git+https://github.com/webpack-contrib/style-loader.git</url>
+          <url>git+https://code.haverbeke.berlin/codemirror/view.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@codemirror/commands@6.10.3">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>commands</name>
+      <version>6.10.3</version>
+      <description>Collection of editing commands for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/commands@6.10.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Fcommands.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/codemirror/commands.git</url>
           <comment>as detected from PackageJson property "repository.url"</comment>
         </reference>
         <reference type="website">
-          <url>https://github.com/webpack-contrib/style-loader</url>
+          <url>https://github.com/codemirror/commands#readme</url>
           <comment>as detected from PackageJson property "homepage"</comment>
         </reference>
         <reference type="issue-tracker">
-          <url>https://github.com/webpack-contrib/style-loader/issues</url>
+          <url>https://github.com/codemirror/commands/issues</url>
           <comment>as detected from PackageJson property "bugs.url"</comment>
         </reference>
       </externalReferences>
     </component>
-    <component type="library" bom-ref="css-loader@6.11.0">
-      <author>Tobias Koppers @sokra</author>
-      <name>css-loader</name>
-      <version>6.11.0</version>
-      <description>css loader module for webpack</description>
+    <component type="library" bom-ref="@codemirror/language@6.12.3">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>language</name>
+      <version>6.12.3</version>
+      <description>Language support infrastructure for the CodeMirror code editor</description>
       <licenses>
         <license>
           <id>MIT</id>
         </license>
       </licenses>
-      <purl>pkg:npm/css-loader@6.11.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fwebpack-contrib%2Fcss-loader.git</purl>
+      <purl>pkg:npm/%40codemirror/language@6.12.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flanguage.git</purl>
       <externalReferences>
         <reference type="vcs">
-          <url>git+https://github.com/webpack-contrib/css-loader.git</url>
+          <url>git+https://github.com/codemirror/language.git</url>
           <comment>as detected from PackageJson property "repository.url"</comment>
         </reference>
         <reference type="website">
-          <url>https://github.com/webpack-contrib/css-loader</url>
+          <url>https://github.com/codemirror/language#readme</url>
           <comment>as detected from PackageJson property "homepage"</comment>
         </reference>
         <reference type="issue-tracker">
-          <url>https://github.com/webpack-contrib/css-loader/issues</url>
+          <url>https://github.com/codemirror/language/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@codemirror/lang-html@6.4.11">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>lang-html</name>
+      <version>6.4.11</version>
+      <description>HTML language support for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/lang-html@6.4.11?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flang-html.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/codemirror/lang-html.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/codemirror/lang-html#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/codemirror/lang-html/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@codemirror/autocomplete@6.20.2">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>autocomplete</name>
+      <version>6.20.2</version>
+      <description>Autocompletion for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/autocomplete@6.20.2?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Fautocomplete.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://code.haverbeke.berlin/codemirror/autocomplete.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@marijn/find-cluster-break@1.0.2">
+      <author>Marijn Haverbeke</author>
+      <group>@marijn</group>
+      <name>find-cluster-break</name>
+      <version>1.0.2</version>
+      <description>Find the position of grapheme cluster breaks in a string</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40marijn/find-cluster-break@1.0.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fmarijnh%2Ffind-cluster-break.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/marijnh/find-cluster-break.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/marijnh/find-cluster-break#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/marijnh/find-cluster-break/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="w3c-keyname@2.2.8">
+      <author>Marijn Haverbeke</author>
+      <name>w3c-keyname</name>
+      <version>2.2.8</version>
+      <description>Get a KeyboardEvent.key-style string from an event</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/w3c-keyname@2.2.8?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fmarijnh%2Fw3c-keyname.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/marijnh/w3c-keyname.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/marijnh/w3c-keyname#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/marijnh/w3c-keyname/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="style-mod@4.1.3">
+      <author>Marijn Haverbeke</author>
+      <name>style-mod</name>
+      <version>4.1.3</version>
+      <description>A minimal CSS module shim</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/style-mod@4.1.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fmarijnh%2Fstyle-mod.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/marijnh/style-mod.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/marijnh/style-mod#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/marijnh/style-mod/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="crelt@1.0.6">
+      <author>Marijn Haverbeke</author>
+      <name>crelt</name>
+      <version>1.0.6</version>
+      <description>Tiny DOM-element-creation utility</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/crelt@1.0.6?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fmarijnh%2Fcrelt.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/marijnh/crelt.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/marijnh/crelt#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/marijnh/crelt/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@lezer/common@1.5.2">
+      <author>Marijn Haverbeke</author>
+      <group>@lezer</group>
+      <name>common</name>
+      <version>1.5.2</version>
+      <description>Syntax tree data structure and parser interfaces for the lezer parser</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40lezer/common@1.5.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fcommon.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/lezer-parser/common.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/lezer-parser/common#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/lezer-parser/common/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@lezer/highlight@1.2.3">
+      <author>Marijn Haverbeke</author>
+      <group>@lezer</group>
+      <name>highlight</name>
+      <version>1.2.3</version>
+      <description>Highlighting system for Lezer parse trees</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40lezer/highlight@1.2.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fhighlight.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/lezer-parser/highlight.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/lezer-parser/highlight#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/lezer-parser/highlight/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@lezer/html@1.3.13">
+      <author>Marijn Haverbeke</author>
+      <group>@lezer</group>
+      <name>html</name>
+      <version>1.3.13</version>
+      <description>lezer-based HTML grammar</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40lezer/html@1.3.13?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fhtml.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/lezer-parser/html.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/lezer-parser/html#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/lezer-parser/html/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@codemirror/lang-javascript@6.2.5">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>lang-javascript</name>
+      <version>6.2.5</version>
+      <description>JavaScript language support for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/lang-javascript@6.2.5?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flang-javascript.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/codemirror/lang-javascript.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/codemirror/lang-javascript#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/codemirror/lang-javascript/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@codemirror/lang-css@6.3.1">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>lang-css</name>
+      <version>6.3.1</version>
+      <description>CSS language support for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/lang-css@6.3.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flang-css.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/codemirror/lang-css.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/codemirror/lang-css#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/codemirror/lang-css/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@lezer/lr@1.4.10">
+      <author>Marijn Haverbeke</author>
+      <group>@lezer</group>
+      <name>lr</name>
+      <version>1.4.10</version>
+      <description>Incremental parser</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40lezer/lr@1.4.10?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Flezer%2Flr.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://code.haverbeke.berlin/lezer/lr.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@lezer/javascript@1.5.4">
+      <author>Marijn Haverbeke</author>
+      <group>@lezer</group>
+      <name>javascript</name>
+      <version>1.5.4</version>
+      <description>lezer-based JavaScript grammar</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40lezer/javascript@1.5.4?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fjavascript.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/lezer-parser/javascript.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/lezer-parser/javascript#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/lezer-parser/javascript/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@lezer/css@1.3.3">
+      <author>Marijn Haverbeke</author>
+      <group>@lezer</group>
+      <name>css</name>
+      <version>1.3.3</version>
+      <description>lezer-based CSS grammar</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40lezer/css@1.3.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fcss.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/lezer-parser/css.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/lezer-parser/css#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/lezer-parser/css/issues</url>
           <comment>as detected from PackageJson property "bugs.url"</comment>
         </reference>
       </externalReferences>
@@ -156,13 +518,84 @@
   </components>
   <dependencies>
     <dependency ref="@jahia/addstuff@3.0.3-SNAPSHOT">
-      <dependency ref="codemirror@5.65.21"/>
+      <dependency ref="@codemirror/state@6.6.0"/>
+      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@codemirror/commands@6.10.3"/>
+      <dependency ref="@codemirror/language@6.12.3"/>
+      <dependency ref="@codemirror/lang-html@6.4.11"/>
+      <dependency ref="@codemirror/autocomplete@6.20.2"/>
     </dependency>
-    <dependency ref="codemirror@5.65.21">
-      <dependency ref="style-loader@3.3.4"/>
-      <dependency ref="css-loader@6.11.0"/>
+    <dependency ref="@codemirror/state@6.6.0">
+      <dependency ref="@marijn/find-cluster-break@1.0.2"/>
     </dependency>
-    <dependency ref="style-loader@3.3.4"/>
-    <dependency ref="css-loader@6.11.0"/>
+    <dependency ref="@codemirror/view@6.43.0">
+      <dependency ref="@codemirror/state@6.6.0"/>
+      <dependency ref="style-mod@4.1.3"/>
+      <dependency ref="w3c-keyname@2.2.8"/>
+      <dependency ref="crelt@1.0.6"/>
+    </dependency>
+    <dependency ref="@codemirror/commands@6.10.3">
+      <dependency ref="@codemirror/state@6.6.0"/>
+      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@codemirror/language@6.12.3"/>
+      <dependency ref="@lezer/common@1.5.2"/>
+    </dependency>
+    <dependency ref="@codemirror/language@6.12.3">
+      <dependency ref="@lezer/common@1.5.2"/>
+      <dependency ref="@codemirror/state@6.6.0"/>
+      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@lezer/highlight@1.2.3"/>
+      <dependency ref="style-mod@4.1.3"/>
+    </dependency>
+    <dependency ref="@codemirror/lang-html@6.4.11">
+      <dependency ref="@lezer/html@1.3.13"/>
+      <dependency ref="@codemirror/lang-css@6.3.1"/>
+      <dependency ref="@codemirror/lang-javascript@6.2.5"/>
+      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@codemirror/state@6.6.0"/>
+      <dependency ref="@codemirror/language@6.12.3"/>
+    </dependency>
+    <dependency ref="@codemirror/autocomplete@6.20.2">
+      <dependency ref="@codemirror/state@6.6.0"/>
+      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@codemirror/language@6.12.3"/>
+    </dependency>
+    <dependency ref="@marijn/find-cluster-break@1.0.2"/>
+    <dependency ref="w3c-keyname@2.2.8"/>
+    <dependency ref="style-mod@4.1.3"/>
+    <dependency ref="crelt@1.0.6"/>
+    <dependency ref="@lezer/common@1.5.2"/>
+    <dependency ref="@lezer/highlight@1.2.3">
+      <dependency ref="@lezer/common@1.5.2"/>
+    </dependency>
+    <dependency ref="@lezer/html@1.3.13">
+      <dependency ref="@lezer/lr@1.4.10"/>
+      <dependency ref="@lezer/highlight@1.2.3"/>
+      <dependency ref="@lezer/common@1.5.2"/>
+    </dependency>
+    <dependency ref="@codemirror/lang-javascript@6.2.5">
+      <dependency ref="@lezer/javascript@1.5.4"/>
+      <dependency ref="@codemirror/language@6.12.3"/>
+      <dependency ref="@codemirror/state@6.6.0"/>
+      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@codemirror/autocomplete@6.20.2"/>
+      <dependency ref="@lezer/common@1.5.2"/>
+    </dependency>
+    <dependency ref="@codemirror/lang-css@6.3.1">
+      <dependency ref="@lezer/css@1.3.3"/>
+      <dependency ref="@codemirror/language@6.12.3"/>
+      <dependency ref="@lezer/common@1.5.2"/>
+    </dependency>
+    <dependency ref="@lezer/lr@1.4.10">
+      <dependency ref="@lezer/common@1.5.2"/>
+    </dependency>
+    <dependency ref="@lezer/javascript@1.5.4">
+      <dependency ref="@lezer/lr@1.4.10"/>
+      <dependency ref="@lezer/highlight@1.2.3"/>
+    </dependency>
+    <dependency ref="@lezer/css@1.3.3">
+      <dependency ref="@lezer/lr@1.4.10"/>
+      <dependency ref="@lezer/highlight@1.2.3"/>
+    </dependency>
   </dependencies>
 </bom>

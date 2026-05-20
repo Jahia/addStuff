@@ -3,9 +3,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
   "version": 1,
-  "serialNumber": "urn:uuid:28ae4c06-bf18-4661-a48f-91158215759e",
+  "serialNumber": "urn:uuid:4e53445b-3d97-4269-b4fe-3cef5acb8493",
   "metadata": {
-    "timestamp": "2026-05-13T15:32:23.023Z",
+    "timestamp": "2026-05-20T10:56:45.253Z",
     "tools": [
       {
         "name": "webpack",
@@ -28,28 +28,6 @@
           },
           {
             "url": "https://github.com/CycloneDX/cyclonedx-webpack-plugin/issues",
-            "type": "issue-tracker",
-            "comment": "as detected from PackageJson property \"bugs.url\""
-          }
-        ]
-      },
-      {
-        "vendor": "@cyclonedx",
-        "name": "cyclonedx-library",
-        "version": "10.0.0",
-        "externalReferences": [
-          {
-            "url": "git+https://github.com/CycloneDX/cyclonedx-javascript-library.git",
-            "type": "vcs",
-            "comment": "as detected from PackageJson property \"repository.url\""
-          },
-          {
-            "url": "https://github.com/CycloneDX/cyclonedx-javascript-library#readme",
-            "type": "website",
-            "comment": "as detected from PackageJson property \"homepage\""
-          },
-          {
-            "url": "https://github.com/CycloneDX/cyclonedx-javascript-library/issues",
             "type": "issue-tracker",
             "comment": "as detected from PackageJson property \"bugs.url\""
           }
@@ -94,11 +72,12 @@
   "components": [
     {
       "type": "library",
-      "name": "codemirror",
-      "version": "5.65.21",
-      "bom-ref": "codemirror@5.65.21",
+      "name": "state",
+      "group": "@codemirror",
+      "version": "6.6.0",
+      "bom-ref": "@codemirror/state@6.6.0",
       "author": "Marijn Haverbeke",
-      "description": "Full-featured in-browser code editor",
+      "description": "Editor state data structures for the CodeMirror code editor",
       "licenses": [
         {
           "license": {
@@ -106,20 +85,20 @@
           }
         }
       ],
-      "purl": "pkg:npm/codemirror@5.65.21?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2FCodeMirror.git",
+      "purl": "pkg:npm/%40codemirror/state@6.6.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Fstate.git",
       "externalReferences": [
         {
-          "url": "git+https://github.com/codemirror/CodeMirror.git",
+          "url": "git+https://github.com/codemirror/state.git",
           "type": "vcs",
           "comment": "as detected from PackageJson property \"repository.url\""
         },
         {
-          "url": "https://codemirror.net/5/",
+          "url": "https://github.com/codemirror/state#readme",
           "type": "website",
           "comment": "as detected from PackageJson property \"homepage\""
         },
         {
-          "url": "http://github.com/codemirror/CodeMirror/issues",
+          "url": "https://github.com/codemirror/state/issues",
           "type": "issue-tracker",
           "comment": "as detected from PackageJson property \"bugs.url\""
         }
@@ -127,11 +106,12 @@
     },
     {
       "type": "library",
-      "name": "style-loader",
-      "version": "3.3.4",
-      "bom-ref": "style-loader@3.3.4",
-      "author": "Tobias Koppers @sokra",
-      "description": "style loader module for webpack",
+      "name": "view",
+      "group": "@codemirror",
+      "version": "6.43.0",
+      "bom-ref": "@codemirror/view@6.43.0",
+      "author": "Marijn Haverbeke",
+      "description": "DOM view component for the CodeMirror code editor",
       "licenses": [
         {
           "license": {
@@ -139,20 +119,44 @@
           }
         }
       ],
-      "purl": "pkg:npm/style-loader@3.3.4?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fwebpack-contrib%2Fstyle-loader.git",
+      "purl": "pkg:npm/%40codemirror/view@6.43.0?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Fview.git",
       "externalReferences": [
         {
-          "url": "git+https://github.com/webpack-contrib/style-loader.git",
+          "url": "git+https://code.haverbeke.berlin/codemirror/view.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "commands",
+      "group": "@codemirror",
+      "version": "6.10.3",
+      "bom-ref": "@codemirror/commands@6.10.3",
+      "author": "Marijn Haverbeke",
+      "description": "Collection of editing commands for the CodeMirror code editor",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40codemirror/commands@6.10.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Fcommands.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/codemirror/commands.git",
           "type": "vcs",
           "comment": "as detected from PackageJson property \"repository.url\""
         },
         {
-          "url": "https://github.com/webpack-contrib/style-loader",
+          "url": "https://github.com/codemirror/commands#readme",
           "type": "website",
           "comment": "as detected from PackageJson property \"homepage\""
         },
         {
-          "url": "https://github.com/webpack-contrib/style-loader/issues",
+          "url": "https://github.com/codemirror/commands/issues",
           "type": "issue-tracker",
           "comment": "as detected from PackageJson property \"bugs.url\""
         }
@@ -160,11 +164,12 @@
     },
     {
       "type": "library",
-      "name": "css-loader",
-      "version": "6.11.0",
-      "bom-ref": "css-loader@6.11.0",
-      "author": "Tobias Koppers @sokra",
-      "description": "css loader module for webpack",
+      "name": "language",
+      "group": "@codemirror",
+      "version": "6.12.3",
+      "bom-ref": "@codemirror/language@6.12.3",
+      "author": "Marijn Haverbeke",
+      "description": "Language support infrastructure for the CodeMirror code editor",
       "licenses": [
         {
           "license": {
@@ -172,20 +177,473 @@
           }
         }
       ],
-      "purl": "pkg:npm/css-loader@6.11.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fwebpack-contrib%2Fcss-loader.git",
+      "purl": "pkg:npm/%40codemirror/language@6.12.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flanguage.git",
       "externalReferences": [
         {
-          "url": "git+https://github.com/webpack-contrib/css-loader.git",
+          "url": "git+https://github.com/codemirror/language.git",
           "type": "vcs",
           "comment": "as detected from PackageJson property \"repository.url\""
         },
         {
-          "url": "https://github.com/webpack-contrib/css-loader",
+          "url": "https://github.com/codemirror/language#readme",
           "type": "website",
           "comment": "as detected from PackageJson property \"homepage\""
         },
         {
-          "url": "https://github.com/webpack-contrib/css-loader/issues",
+          "url": "https://github.com/codemirror/language/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lang-html",
+      "group": "@codemirror",
+      "version": "6.4.11",
+      "bom-ref": "@codemirror/lang-html@6.4.11",
+      "author": "Marijn Haverbeke",
+      "description": "HTML language support for the CodeMirror code editor",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40codemirror/lang-html@6.4.11?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flang-html.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/codemirror/lang-html.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/codemirror/lang-html#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/codemirror/lang-html/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "autocomplete",
+      "group": "@codemirror",
+      "version": "6.20.2",
+      "bom-ref": "@codemirror/autocomplete@6.20.2",
+      "author": "Marijn Haverbeke",
+      "description": "Autocompletion for the CodeMirror code editor",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40codemirror/autocomplete@6.20.2?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Fautocomplete.git",
+      "externalReferences": [
+        {
+          "url": "git+https://code.haverbeke.berlin/codemirror/autocomplete.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "find-cluster-break",
+      "group": "@marijn",
+      "version": "1.0.2",
+      "bom-ref": "@marijn/find-cluster-break@1.0.2",
+      "author": "Marijn Haverbeke",
+      "description": "Find the position of grapheme cluster breaks in a string",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40marijn/find-cluster-break@1.0.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fmarijnh%2Ffind-cluster-break.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/marijnh/find-cluster-break.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/marijnh/find-cluster-break#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/marijnh/find-cluster-break/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "w3c-keyname",
+      "version": "2.2.8",
+      "bom-ref": "w3c-keyname@2.2.8",
+      "author": "Marijn Haverbeke",
+      "description": "Get a KeyboardEvent.key-style string from an event",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/w3c-keyname@2.2.8?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fmarijnh%2Fw3c-keyname.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/marijnh/w3c-keyname.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/marijnh/w3c-keyname#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/marijnh/w3c-keyname/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "style-mod",
+      "version": "4.1.3",
+      "bom-ref": "style-mod@4.1.3",
+      "author": "Marijn Haverbeke",
+      "description": "A minimal CSS module shim",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/style-mod@4.1.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fmarijnh%2Fstyle-mod.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/marijnh/style-mod.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/marijnh/style-mod#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/marijnh/style-mod/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "crelt",
+      "version": "1.0.6",
+      "bom-ref": "crelt@1.0.6",
+      "author": "Marijn Haverbeke",
+      "description": "Tiny DOM-element-creation utility",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/crelt@1.0.6?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fmarijnh%2Fcrelt.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/marijnh/crelt.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/marijnh/crelt#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/marijnh/crelt/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "common",
+      "group": "@lezer",
+      "version": "1.5.2",
+      "bom-ref": "@lezer/common@1.5.2",
+      "author": "Marijn Haverbeke",
+      "description": "Syntax tree data structure and parser interfaces for the lezer parser",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40lezer/common@1.5.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fcommon.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/lezer-parser/common.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/common#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/common/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "highlight",
+      "group": "@lezer",
+      "version": "1.2.3",
+      "bom-ref": "@lezer/highlight@1.2.3",
+      "author": "Marijn Haverbeke",
+      "description": "Highlighting system for Lezer parse trees",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40lezer/highlight@1.2.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fhighlight.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/lezer-parser/highlight.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/highlight#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/highlight/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "html",
+      "group": "@lezer",
+      "version": "1.3.13",
+      "bom-ref": "@lezer/html@1.3.13",
+      "author": "Marijn Haverbeke",
+      "description": "lezer-based HTML grammar",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40lezer/html@1.3.13?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fhtml.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/lezer-parser/html.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/html#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/html/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lang-javascript",
+      "group": "@codemirror",
+      "version": "6.2.5",
+      "bom-ref": "@codemirror/lang-javascript@6.2.5",
+      "author": "Marijn Haverbeke",
+      "description": "JavaScript language support for the CodeMirror code editor",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40codemirror/lang-javascript@6.2.5?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flang-javascript.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/codemirror/lang-javascript.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/codemirror/lang-javascript#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/codemirror/lang-javascript/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lang-css",
+      "group": "@codemirror",
+      "version": "6.3.1",
+      "bom-ref": "@codemirror/lang-css@6.3.1",
+      "author": "Marijn Haverbeke",
+      "description": "CSS language support for the CodeMirror code editor",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40codemirror/lang-css@6.3.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flang-css.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/codemirror/lang-css.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/codemirror/lang-css#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/codemirror/lang-css/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lr",
+      "group": "@lezer",
+      "version": "1.4.10",
+      "bom-ref": "@lezer/lr@1.4.10",
+      "author": "Marijn Haverbeke",
+      "description": "Incremental parser",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40lezer/lr@1.4.10?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Flezer%2Flr.git",
+      "externalReferences": [
+        {
+          "url": "git+https://code.haverbeke.berlin/lezer/lr.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "javascript",
+      "group": "@lezer",
+      "version": "1.5.4",
+      "bom-ref": "@lezer/javascript@1.5.4",
+      "author": "Marijn Haverbeke",
+      "description": "lezer-based JavaScript grammar",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40lezer/javascript@1.5.4?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fjavascript.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/lezer-parser/javascript.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/javascript#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/javascript/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "css",
+      "group": "@lezer",
+      "version": "1.3.3",
+      "bom-ref": "@lezer/css@1.3.3",
+      "author": "Marijn Haverbeke",
+      "description": "lezer-based CSS grammar",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40lezer/css@1.3.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Flezer-parser%2Fcss.git",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/lezer-parser/css.git",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/css#readme",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/lezer-parser/css/issues",
           "type": "issue-tracker",
           "comment": "as detected from PackageJson property \"bugs.url\""
         }
@@ -196,21 +654,134 @@
     {
       "ref": "@jahia/addstuff@3.0.3-SNAPSHOT",
       "dependsOn": [
-        "codemirror@5.65.21"
+        "@codemirror/state@6.6.0",
+        "@codemirror/view@6.43.0",
+        "@codemirror/commands@6.10.3",
+        "@codemirror/language@6.12.3",
+        "@codemirror/lang-html@6.4.11",
+        "@codemirror/autocomplete@6.20.2"
       ]
     },
     {
-      "ref": "codemirror@5.65.21",
+      "ref": "@codemirror/state@6.6.0",
       "dependsOn": [
-        "style-loader@3.3.4",
-        "css-loader@6.11.0"
+        "@marijn/find-cluster-break@1.0.2"
       ]
     },
     {
-      "ref": "style-loader@3.3.4"
+      "ref": "@codemirror/view@6.43.0",
+      "dependsOn": [
+        "@codemirror/state@6.6.0",
+        "style-mod@4.1.3",
+        "w3c-keyname@2.2.8",
+        "crelt@1.0.6"
+      ]
     },
     {
-      "ref": "css-loader@6.11.0"
+      "ref": "@codemirror/commands@6.10.3",
+      "dependsOn": [
+        "@codemirror/state@6.6.0",
+        "@codemirror/view@6.43.0",
+        "@codemirror/language@6.12.3",
+        "@lezer/common@1.5.2"
+      ]
+    },
+    {
+      "ref": "@codemirror/language@6.12.3",
+      "dependsOn": [
+        "@lezer/common@1.5.2",
+        "@codemirror/state@6.6.0",
+        "@codemirror/view@6.43.0",
+        "@lezer/highlight@1.2.3",
+        "style-mod@4.1.3"
+      ]
+    },
+    {
+      "ref": "@codemirror/lang-html@6.4.11",
+      "dependsOn": [
+        "@lezer/html@1.3.13",
+        "@codemirror/lang-css@6.3.1",
+        "@codemirror/lang-javascript@6.2.5",
+        "@codemirror/view@6.43.0",
+        "@codemirror/state@6.6.0",
+        "@codemirror/language@6.12.3"
+      ]
+    },
+    {
+      "ref": "@codemirror/autocomplete@6.20.2",
+      "dependsOn": [
+        "@codemirror/state@6.6.0",
+        "@codemirror/view@6.43.0",
+        "@codemirror/language@6.12.3"
+      ]
+    },
+    {
+      "ref": "@marijn/find-cluster-break@1.0.2"
+    },
+    {
+      "ref": "w3c-keyname@2.2.8"
+    },
+    {
+      "ref": "style-mod@4.1.3"
+    },
+    {
+      "ref": "crelt@1.0.6"
+    },
+    {
+      "ref": "@lezer/common@1.5.2"
+    },
+    {
+      "ref": "@lezer/highlight@1.2.3",
+      "dependsOn": [
+        "@lezer/common@1.5.2"
+      ]
+    },
+    {
+      "ref": "@lezer/html@1.3.13",
+      "dependsOn": [
+        "@lezer/lr@1.4.10",
+        "@lezer/highlight@1.2.3",
+        "@lezer/common@1.5.2"
+      ]
+    },
+    {
+      "ref": "@codemirror/lang-javascript@6.2.5",
+      "dependsOn": [
+        "@lezer/javascript@1.5.4",
+        "@codemirror/language@6.12.3",
+        "@codemirror/state@6.6.0",
+        "@codemirror/view@6.43.0",
+        "@codemirror/autocomplete@6.20.2",
+        "@lezer/common@1.5.2"
+      ]
+    },
+    {
+      "ref": "@codemirror/lang-css@6.3.1",
+      "dependsOn": [
+        "@lezer/css@1.3.3",
+        "@codemirror/language@6.12.3",
+        "@lezer/common@1.5.2"
+      ]
+    },
+    {
+      "ref": "@lezer/lr@1.4.10",
+      "dependsOn": [
+        "@lezer/common@1.5.2"
+      ]
+    },
+    {
+      "ref": "@lezer/javascript@1.5.4",
+      "dependsOn": [
+        "@lezer/lr@1.4.10",
+        "@lezer/highlight@1.2.3"
+      ]
+    },
+    {
+      "ref": "@lezer/css@1.3.3",
+      "dependsOn": [
+        "@lezer/lr@1.4.10",
+        "@lezer/highlight@1.2.3"
+      ]
     }
   ]
 }
