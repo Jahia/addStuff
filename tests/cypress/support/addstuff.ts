@@ -50,9 +50,11 @@ export const adminSettingsUrl = () =>
 
 export const setCodeMirrorValue = (index: number, value: string) => {
     cy.window().then(win => {
-        const editors = win.document.querySelectorAll('.addstuff-cm-field .CodeMirror')
-        const cm = (editors[index] as any).CodeMirror
-        cm.setValue(value)
+        const containers = win.document.querySelectorAll('.addstuff-cm-field')
+        const view = (containers[index] as any)._cmView
+        view.dispatch({
+            changes: {from: 0, to: view.state.doc.length, insert: value}
+        })
     })
 }
 

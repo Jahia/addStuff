@@ -65,10 +65,51 @@ describe('AddStuff — Site settings UI', () => {
 
             // Editor must show the last saved value
             cy.window().then(win => {
-                const editors = win.document.querySelectorAll('.addstuff-cm-field .CodeMirror')
-                const value = (editors[0] as any).CodeMirror.getValue()
+                const containers = win.document.querySelectorAll('.addstuff-cm-field')
+                const view = (containers[0] as any)._cmView
+                const value = view.state.doc.toString()
                 expect(value).to.contain('addstuff-cancel-original')
             })
+        })
+    })
+
+    context('Accessibility — WCAG 2.1 AA', () => {
+        beforeEach(() => {
+            cy.login()
+            cy.visit(adminSettingsUrl())
+            cy.get('.addstuff-cm-field').should('have.length', 4)
+        })
+
+        it('CM6 editors have aria-labelledby', () => {
+            cy.get('.cm-editor').first().should('have.attr', 'aria-labelledby')
+        })
+
+        it('CM6 editors have aria-describedby', () => {
+            cy.get('.cm-editor').first().should('have.attr', 'aria-describedby')
+        })
+
+        it('CM6 editors have role=textbox', () => {
+            cy.get('.cm-editor').first().should('have.attr', 'role', 'textbox')
+        })
+
+        it('has 2 role=group sections', () => {
+            cy.get('[role="group"]').should('have.length', 2)
+        })
+
+        it('has label elements for all 4 editors', () => {
+            cy.get('label#addstuff-headTop-label').should('exist')
+            cy.get('label#addstuff-head-label').should('exist')
+            cy.get('label#addstuff-bodyTop-label').should('exist')
+            cy.get('label#addstuff-body-label').should('exist')
+        })
+
+        it('has aria-live status region present on load', () => {
+            cy.get('[role="status"]').should('exist')
+        })
+
+        it('announces save result in live region', () => {
+            cy.contains('button', 'Save').click()
+            cy.get('[role="status"]').should('not.be.empty')
         })
     })
 })
