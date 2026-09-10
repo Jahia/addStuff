@@ -21,7 +21,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     <parent>
         <artifactId>jahia-modules</artifactId>
         <groupId>org.jahia.modules</groupId>
-        <version>8.2.0.0</version>
+        <version>8.2.3.2</version>
     </parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>addstuff</artifactId>
