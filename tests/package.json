@@ -8,6 +8,11 @@
     "report:merge": "mochawesome-merge results/reports/cypress*.json > results/reports/report.json && rm results/reports/cypress*.json",
     "report:html": "marge --inline results/reports/report.json --reportDir results/reports/"
   },
+  "resolutions": {
+    "qs": "^6.15.2",
+    "serialize-javascript": "^7.0.5",
+    "uuid": "^11.1.1"
+  },
   "devDependencies": {
     "@apollo/client": "^3.14.0",
     "@jahia/cypress": "^7.0.0",

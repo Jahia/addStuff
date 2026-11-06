@@ -19,7 +19,7 @@
 "use strict";
 var moduleMap = {
 	"./init": () => {
-		return Promise.all([__webpack_require__.e("vendors-_yarn_berry_cache_codemirror-commands-npm-6_10_3-c9b25d17d5-10c0_zip_node_modules_cod-b20457"), __webpack_require__.e("src_javascript_init_js")]).then(() => (() => ((__webpack_require__(/*! ./src/javascript/init */ "./src/javascript/init.js")))));
+		return Promise.all([__webpack_require__.e("vendors-_yarn_berry_cache_codemirror-commands-npm-6_11_1-48f75bab54-10c0_zip_node_modules_cod-5b7e80"), __webpack_require__.e("src_javascript_init_js")]).then(() => (() => ((__webpack_require__(/*! ./src/javascript/init */ "./src/javascript/init.js")))));
 	}
 };
 var get = (module, getScope) => {
@@ -132,7 +132,7 @@ __webpack_require__.d(exports, {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + ".jahia." + {"vendors-_yarn_berry_cache_codemirror-commands-npm-6_10_3-c9b25d17d5-10c0_zip_node_modules_cod-b20457":"137ad5","src_javascript_init_js":"0192f6"}[chunkId] + ".js";
+/******/ 			return "" + chunkId + ".jahia." + {"vendors-_yarn_berry_cache_codemirror-commands-npm-6_11_1-48f75bab54-10c0_zip_node_modules_cod-5b7e80":"003136","src_javascript_init_js":"20baf6"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -454,7 +454,7 @@ __webpack_require__.d(exports, {
 /******/ 		var moduleToHandlerMapping = {
 /******/ 			"webpack/sharing/consume/default/@jahia/ui-extender": () => (loadSingletonVersion("default", "@jahia/ui-extender", false, [1,1,1,0])),
 /******/ 			"webpack/sharing/consume/default/react": () => (loadSingletonVersion("default", "react", false, [,[-1,19,0,0,,0],[0,18,3,1],2])),
-/******/ 			"webpack/sharing/consume/default/@jahia/moonstone": () => (loadSingletonVersion("default", "@jahia/moonstone", false, [,[-1,3,0,0,,0],[0,2,16,2],2])),
+/******/ 			"webpack/sharing/consume/default/@jahia/moonstone": () => (loadSingletonVersion("default", "@jahia/moonstone", false, [,[-1,3,0,0,,0],[0,2,20,3],2])),
 /******/ 			"webpack/sharing/consume/default/react-i18next": () => (loadSingletonVersion("default", "react-i18next", false, [1,11,18,6])),
 /******/ 			"webpack/sharing/consume/default/i18next": () => (loadSingletonVersion("default", "i18next", false, [1,21,6,14]))
 /******/ 		};
