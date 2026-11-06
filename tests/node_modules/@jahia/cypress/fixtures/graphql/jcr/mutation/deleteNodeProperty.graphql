@@ -1,9 +1,0 @@
-mutation($pathOrId: String!, $property: String!, $language: String){
-  jcr{
-    mutateNode(pathOrId: $pathOrId){
-      mutateProperty(name: $property){
-      	delete(language: $language)
-      }
-    }
-  }
-}
