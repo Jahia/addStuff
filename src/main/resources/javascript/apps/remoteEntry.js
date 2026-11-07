@@ -19,7 +19,7 @@
 "use strict";
 const moduleMap = {
 	"./init": () => {
-		return Promise.all([__webpack_require__.e("vendors-_yarn_berry_cache_codemirror-commands-npm-6_11_1-48f75bab54-10c0_zip_node_modules_cod-723ae0"), __webpack_require__.e("src_javascript_init_js")]).then(() => (() => ((__webpack_require__(/*! ./src/javascript/init */ "./src/javascript/init.js")))));
+		return Promise.all([__webpack_require__.e("vendors-_yarn_berry_cache_codemirror-commands-npm-6_11_1-48f75bab54-10c0_zip_node_modules_cod-b2ec95"), __webpack_require__.e("src_javascript_init_js")]).then(() => (() => ((__webpack_require__(/*! ./src/javascript/init */ "./src/javascript/init.js")))));
 	}
 };
 const get = (module, getScope) => {
@@ -123,7 +123,7 @@ __webpack_require__.d(exports, {
 /******/ 	
 /******/ 	/* webpack/runtime/get javascript chunk filename */
 /******/ 	// This function allow to reference async chunks
-/******/ 	__webpack_require__.u = (chunkId) => (chunkId + ".jahia." + {"vendors-_yarn_berry_cache_codemirror-commands-npm-6_11_1-48f75bab54-10c0_zip_node_modules_cod-723ae0":"475659","src_javascript_init_js":"fac04c"}[chunkId] + ".js");
+/******/ 	__webpack_require__.u = (chunkId) => (chunkId + ".jahia." + {"vendors-_yarn_berry_cache_codemirror-commands-npm-6_11_1-48f75bab54-10c0_zip_node_modules_cod-b2ec95":"836ac7","src_javascript_init_js":"fac04c"}[chunkId] + ".js");
 /******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	__webpack_require__.g = (function() {
