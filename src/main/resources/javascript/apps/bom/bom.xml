@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bom xmlns="http://cyclonedx.org/schema/bom/1.4" version="1" serialNumber="urn:uuid:648cc27e-0883-446e-b59a-64b40bae7bac">
+<bom xmlns="http://cyclonedx.org/schema/bom/1.4" version="1" serialNumber="urn:uuid:1ff20b29-aa02-48da-baa2-11c045485e1d">
   <metadata>
-    <timestamp>2026-11-06T07:21:47.748Z</timestamp>
+    <timestamp>2026-11-07T20:22:54.463Z</timestamp>
     <tools>
       <tool>
         <name>webpack</name>
-        <version>5.106.1</version>
+        <version>5.112.2</version>
       </tool>
       <tool>
         <vendor>@cyclonedx</vendor>
         <name>webpack-plugin</name>
-        <version>5.3.2</version>
+        <version>5.3.3</version>
         <externalReferences>
           <reference type="vcs">
             <url>git+https://github.com/CycloneDX/cyclonedx-webpack-plugin.git</url>
@@ -22,6 +22,25 @@
           </reference>
           <reference type="issue-tracker">
             <url>https://github.com/CycloneDX/cyclonedx-webpack-plugin/issues</url>
+            <comment>as detected from PackageJson property "bugs.url"</comment>
+          </reference>
+        </externalReferences>
+      </tool>
+      <tool>
+        <vendor>@cyclonedx</vendor>
+        <name>cyclonedx-library</name>
+        <version>10.0.0</version>
+        <externalReferences>
+          <reference type="vcs">
+            <url>git+https://github.com/CycloneDX/cyclonedx-javascript-library.git</url>
+            <comment>as detected from PackageJson property "repository.url"</comment>
+          </reference>
+          <reference type="website">
+            <url>https://github.com/CycloneDX/cyclonedx-javascript-library#readme</url>
+            <comment>as detected from PackageJson property "homepage"</comment>
+          </reference>
+          <reference type="issue-tracker">
+            <url>https://github.com/CycloneDX/cyclonedx-javascript-library/issues</url>
             <comment>as detected from PackageJson property "bugs.url"</comment>
           </reference>
         </externalReferences>
@@ -75,21 +94,59 @@
         </reference>
       </externalReferences>
     </component>
-    <component type="library" bom-ref="@codemirror/view@6.43.0">
+    <component type="library" bom-ref="@codemirror/view@6.43.15">
       <author>Marijn Haverbeke</author>
       <group>@codemirror</group>
       <name>view</name>
-      <version>6.43.0</version>
+      <version>6.43.15</version>
       <description>DOM view component for the CodeMirror code editor</description>
       <licenses>
         <license>
           <id>MIT</id>
         </license>
       </licenses>
-      <purl>pkg:npm/%40codemirror/view@6.43.0?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Fview.git</purl>
+      <purl>pkg:npm/%40codemirror/view@6.43.15?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Fview.git</purl>
       <externalReferences>
         <reference type="vcs">
           <url>git+https://code.haverbeke.berlin/codemirror/view.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@codemirror/language@6.13.1">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>language</name>
+      <version>6.13.1</version>
+      <description>Language support infrastructure for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/language@6.13.1?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Flanguage.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://code.haverbeke.berlin/codemirror/language.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@codemirror/lang-html@6.4.12">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>lang-html</name>
+      <version>6.4.12</version>
+      <description>HTML language support for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/lang-html@6.4.12?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Flang-html.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://code.haverbeke.berlin/codemirror/lang-html.git</url>
           <comment>as detected from PackageJson property "repository.url"</comment>
         </reference>
       </externalReferences>
@@ -110,60 +167,6 @@
         <reference type="vcs">
           <url>git+https://code.haverbeke.berlin/codemirror/commands.git</url>
           <comment>as detected from PackageJson property "repository.url"</comment>
-        </reference>
-      </externalReferences>
-    </component>
-    <component type="library" bom-ref="@codemirror/language@6.12.3">
-      <author>Marijn Haverbeke</author>
-      <group>@codemirror</group>
-      <name>language</name>
-      <version>6.12.3</version>
-      <description>Language support infrastructure for the CodeMirror code editor</description>
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
-      <purl>pkg:npm/%40codemirror/language@6.12.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flanguage.git</purl>
-      <externalReferences>
-        <reference type="vcs">
-          <url>git+https://github.com/codemirror/language.git</url>
-          <comment>as detected from PackageJson property "repository.url"</comment>
-        </reference>
-        <reference type="website">
-          <url>https://github.com/codemirror/language#readme</url>
-          <comment>as detected from PackageJson property "homepage"</comment>
-        </reference>
-        <reference type="issue-tracker">
-          <url>https://github.com/codemirror/language/issues</url>
-          <comment>as detected from PackageJson property "bugs.url"</comment>
-        </reference>
-      </externalReferences>
-    </component>
-    <component type="library" bom-ref="@codemirror/lang-html@6.4.11">
-      <author>Marijn Haverbeke</author>
-      <group>@codemirror</group>
-      <name>lang-html</name>
-      <version>6.4.11</version>
-      <description>HTML language support for the CodeMirror code editor</description>
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
-      <purl>pkg:npm/%40codemirror/lang-html@6.4.11?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flang-html.git</purl>
-      <externalReferences>
-        <reference type="vcs">
-          <url>git+https://github.com/codemirror/lang-html.git</url>
-          <comment>as detected from PackageJson property "repository.url"</comment>
-        </reference>
-        <reference type="website">
-          <url>https://github.com/codemirror/lang-html#readme</url>
-          <comment>as detected from PackageJson property "homepage"</comment>
-        </reference>
-        <reference type="issue-tracker">
-          <url>https://github.com/codemirror/lang-html/issues</url>
-          <comment>as detected from PackageJson property "bugs.url"</comment>
         </reference>
       </externalReferences>
     </component>
@@ -318,6 +321,25 @@
         </reference>
       </externalReferences>
     </component>
+    <component type="library" bom-ref="@codemirror/view@6.43.0">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>view</name>
+      <version>6.43.0</version>
+      <description>DOM view component for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/view@6.43.0?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Fview.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://code.haverbeke.berlin/codemirror/view.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
     <component type="library" bom-ref="@lezer/highlight@1.2.3">
       <author>Marijn Haverbeke</author>
       <group>@lezer</group>
@@ -342,6 +364,25 @@
         <reference type="issue-tracker">
           <url>https://github.com/lezer-parser/highlight/issues</url>
           <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="@codemirror/streamparser@6.0.0">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>streamparser</name>
+      <version>6.0.0</version>
+      <description>Types for CodeMirror-5-style stream parsers</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/streamparser@6.0.0?vcs_url=git%2Bhttps%3A%2F%2Fcode.haverbeke.berlin%2Fcodemirror%2Fstreamparser.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://code.haverbeke.berlin/codemirror/streamparser.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
         </reference>
       </externalReferences>
     </component>
@@ -426,6 +467,33 @@
         </reference>
       </externalReferences>
     </component>
+    <component type="library" bom-ref="@codemirror/language@6.12.3">
+      <author>Marijn Haverbeke</author>
+      <group>@codemirror</group>
+      <name>language</name>
+      <version>6.12.3</version>
+      <description>Language support infrastructure for the CodeMirror code editor</description>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <purl>pkg:npm/%40codemirror/language@6.12.3?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcodemirror%2Flanguage.git</purl>
+      <externalReferences>
+        <reference type="vcs">
+          <url>git+https://github.com/codemirror/language.git</url>
+          <comment>as detected from PackageJson property "repository.url"</comment>
+        </reference>
+        <reference type="website">
+          <url>https://github.com/codemirror/language#readme</url>
+          <comment>as detected from PackageJson property "homepage"</comment>
+        </reference>
+        <reference type="issue-tracker">
+          <url>https://github.com/codemirror/language/issues</url>
+          <comment>as detected from PackageJson property "bugs.url"</comment>
+        </reference>
+      </externalReferences>
+    </component>
     <component type="library" bom-ref="@lezer/lr@1.4.10">
       <author>Marijn Haverbeke</author>
       <group>@lezer</group>
@@ -503,41 +571,42 @@
   <dependencies>
     <dependency ref="@jahia/addstuff@3.0.3-SNAPSHOT">
       <dependency ref="@codemirror/state@6.7.6"/>
-      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@codemirror/view@6.43.15"/>
       <dependency ref="@codemirror/commands@6.11.1"/>
-      <dependency ref="@codemirror/language@6.12.3"/>
-      <dependency ref="@codemirror/lang-html@6.4.11"/>
+      <dependency ref="@codemirror/language@6.13.1"/>
+      <dependency ref="@codemirror/lang-html@6.4.12"/>
       <dependency ref="@codemirror/autocomplete@6.20.4"/>
     </dependency>
     <dependency ref="@codemirror/state@6.7.6">
       <dependency ref="@marijn/find-cluster-break@1.0.2"/>
     </dependency>
-    <dependency ref="@codemirror/view@6.43.0">
+    <dependency ref="@codemirror/view@6.43.15">
       <dependency ref="@codemirror/state@6.7.6"/>
       <dependency ref="style-mod@4.1.3"/>
       <dependency ref="w3c-keyname@2.2.8"/>
       <dependency ref="crelt@1.0.6"/>
     </dependency>
-    <dependency ref="@codemirror/commands@6.11.1">
-      <dependency ref="@codemirror/state@6.7.6"/>
-      <dependency ref="@codemirror/view@6.43.0"/>
-      <dependency ref="@codemirror/language@6.12.3"/>
-      <dependency ref="@lezer/common@1.5.2"/>
-    </dependency>
-    <dependency ref="@codemirror/language@6.12.3">
+    <dependency ref="@codemirror/language@6.13.1">
       <dependency ref="@lezer/common@1.5.2"/>
       <dependency ref="@codemirror/state@6.7.6"/>
       <dependency ref="@codemirror/view@6.43.0"/>
       <dependency ref="@lezer/highlight@1.2.3"/>
       <dependency ref="style-mod@4.1.3"/>
+      <dependency ref="@codemirror/streamparser@6.0.0"/>
     </dependency>
-    <dependency ref="@codemirror/lang-html@6.4.11">
+    <dependency ref="@codemirror/lang-html@6.4.12">
       <dependency ref="@lezer/html@1.3.13"/>
       <dependency ref="@codemirror/lang-css@6.3.1"/>
       <dependency ref="@codemirror/lang-javascript@6.2.5"/>
       <dependency ref="@codemirror/view@6.43.0"/>
       <dependency ref="@codemirror/state@6.7.6"/>
       <dependency ref="@codemirror/language@6.12.3"/>
+    </dependency>
+    <dependency ref="@codemirror/commands@6.11.1">
+      <dependency ref="@codemirror/state@6.7.6"/>
+      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@codemirror/language@6.12.3"/>
+      <dependency ref="@lezer/common@1.5.2"/>
     </dependency>
     <dependency ref="@codemirror/autocomplete@6.20.4">
       <dependency ref="@codemirror/state@6.7.6"/>
@@ -549,9 +618,16 @@
     <dependency ref="w3c-keyname@2.2.8"/>
     <dependency ref="crelt@1.0.6"/>
     <dependency ref="@lezer/common@1.5.2"/>
+    <dependency ref="@codemirror/view@6.43.0">
+      <dependency ref="@codemirror/state@6.7.6"/>
+      <dependency ref="style-mod@4.1.3"/>
+      <dependency ref="w3c-keyname@2.2.8"/>
+      <dependency ref="crelt@1.0.6"/>
+    </dependency>
     <dependency ref="@lezer/highlight@1.2.3">
       <dependency ref="@lezer/common@1.5.2"/>
     </dependency>
+    <dependency ref="@codemirror/streamparser@6.0.0"/>
     <dependency ref="@lezer/html@1.3.13">
       <dependency ref="@lezer/lr@1.4.10"/>
       <dependency ref="@lezer/highlight@1.2.3"/>
@@ -569,6 +645,13 @@
       <dependency ref="@codemirror/view@6.43.0"/>
       <dependency ref="@codemirror/autocomplete@6.20.4"/>
       <dependency ref="@lezer/common@1.5.2"/>
+    </dependency>
+    <dependency ref="@codemirror/language@6.12.3">
+      <dependency ref="@lezer/common@1.5.2"/>
+      <dependency ref="@codemirror/state@6.7.6"/>
+      <dependency ref="@codemirror/view@6.43.0"/>
+      <dependency ref="@lezer/highlight@1.2.3"/>
+      <dependency ref="style-mod@4.1.3"/>
     </dependency>
     <dependency ref="@lezer/lr@1.4.10">
       <dependency ref="@lezer/common@1.5.2"/>
