@@ -89,7 +89,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
             <plugin>
                 <groupId>org.cyclonedx</groupId>
                 <artifactId>cyclonedx-maven-plugin</artifactId>
-                <version>2.7.11</version>
+                <version>2.9.3</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
